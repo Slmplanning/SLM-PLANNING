@@ -8,7 +8,7 @@ import UrbanPlanningBenefitsImg from "@/Assets/urban planning (3).jpg";
 import React from "react";
 import UrbanPlanningCarousel from "@/components/UrbanPlanningCarousel";
 // Import images for each service card
-import MasterPlanningImg from "@/Assets/master planning.jpg";
+import MasterPlanningImg from "@/Assets/master_planning.jpg";
 import ZoningLandUseImg from "@/Assets/Zoning & Land Use.jpg";
 import CommunityEngagementImg from "@/Assets/community engagement.png";
 import PolicyDevelopmentImg from "@/Assets/Policy Development.png";
