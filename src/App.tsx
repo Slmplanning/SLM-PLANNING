@@ -15,6 +15,7 @@ import UrbanPlanning from "./pages/UrbanPlanning";
 import UrbanDesign from "./pages/UrbanDesign";
 import LandscapeArchitecture from "./pages/LandscapeArchitecture";
 import ThreeDRendering from "./pages/ThreeDRendering";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/process" element={<Process />} />
           <Route path="/quote" element={<Quote />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
