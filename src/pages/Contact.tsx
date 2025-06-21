@@ -8,6 +8,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import HeroCarousel from "@/components/HeroCarousel";
+// Office icons
+import AddressIcon from "@/Assets/address.png";
+import PhoneIcon from "@/Assets/phone icone.png";
+import EmailIcon from "@/Assets/email.png";
+import TimeIcon from "@/Assets/time.png";
+import FacebookIcon from "@/Assets/facebook-icon.png";
+import LinkedInIcon from "@/Assets/LinkedIn-icon.png";
+import XIcon from "@/Assets/X-icon.png";
+import InstagramIcon from "@/Assets/instagram-icon.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -186,7 +195,9 @@ const Contact = () => {
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <div className="flex items-start space-x-3">
-                      <span className="text-slm-green-600">📍</span>
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white transition-transform duration-200 hover:scale-110">
+                        <img src={AddressIcon} alt="Address" className="w-6 h-6" />
+                      </span>
                       <div>
                         <p className="font-inter font-semibold text-gray-800">Address</p>
                         <p className="font-inter text-gray-600">
@@ -197,21 +208,27 @@ const Contact = () => {
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <span className="text-slm-green-600">📞</span>
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white transition-transform duration-200 hover:scale-110">
+                        <img src={PhoneIcon} alt="Phone" className="w-6 h-6 object-contain object-center" />
+                      </span>
                       <div>
                         <p className="font-inter font-semibold text-gray-800">Phone</p>
                         <p className="font-inter text-gray-600">+1 (555) 123-4567</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <span className="text-slm-green-600">📧</span>
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white transition-transform duration-200 hover:scale-110">
+                        <img src={EmailIcon} alt="Email" className="w-6 h-6" />
+                      </span>
                       <div>
                         <p className="font-inter font-semibold text-gray-800">Email</p>
                         <p className="font-inter text-gray-600">info@slmplanning.com</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <span className="text-slm-green-600">🕒</span>
+                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white transition-transform duration-200 hover:scale-110">
+                        <img src={TimeIcon} alt="Office Hours" className="w-6 h-6" />
+                      </span>
                       <div>
                         <p className="font-inter font-semibold text-gray-800">Office Hours</p>
                         <p className="font-inter text-gray-600">
@@ -225,7 +242,7 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              {/* Map Placeholder */}
+              {/* Map Section */}
               <Card className="border-0 shadow-lg">
                 <CardHeader>
                   <CardTitle className="font-playfair text-xl text-slm-green-700">
@@ -233,17 +250,17 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div 
-                    className="h-64 bg-cover bg-center rounded-lg"
-                    style={{
-                      backgroundImage: `url('https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')`
-                    }}
-                  >
-                    <div className="h-full bg-slm-green-600/20 rounded-lg flex items-center justify-center">
-                      <p className="text-white font-inter font-semibold bg-slm-green-800/80 px-4 py-2 rounded">
-                        Interactive Map Coming Soon
-                      </p>
-                    </div>
+                  <div className="h-64 w-full rounded-lg overflow-hidden">
+                    <iframe
+                      title="SLM Planning Map"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537363153169!3d-37.816279779751554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f1f1f1%3A0x5045675218ce6e0!2s123%20Urban%20Plaza%2C%20Green%20City!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
+                    ></iframe>
                   </div>
                 </CardContent>
               </Card>
@@ -257,14 +274,17 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="flex space-x-4">
-                    <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50">
-                      LinkedIn
+                    <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
+                      <img src={FacebookIcon} alt="Facebook" className="w-5 h-5" /> Facebook
                     </Button>
-                    <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50">
-                      Twitter
+                    <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
+                      <img src={XIcon} alt="X" className="w-5 h-5" /> X
                     </Button>
-                    <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50">
-                      Instagram
+                    <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
+                      <img src={LinkedInIcon} alt="LinkedIn" className="w-5 h-5" /> LinkedIn
+                    </Button>
+                    <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
+                      <img src={InstagramIcon} alt="Instagram" className="w-5 h-5" /> Instagram
                     </Button>
                   </div>
                   <p className="font-inter text-gray-600 text-sm mt-4">

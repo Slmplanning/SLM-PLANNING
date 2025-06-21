@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import slmLogo from "@/Assets/slm-logo.png";
+import EmailIcon from "@/Assets/email.png";
+import PhoneIcon from "@/Assets/phone icone.png";
+import AddressIcon from "@/Assets/address.png";
 
 const Footer = () => {
   return (
@@ -22,9 +25,24 @@ const Footer = () => {
               3D rendering, and landscape architecture solutions.
             </p>
             <div className="space-y-2 text-slm-green-100">
-              <p>📧 info@slmplanning.com</p>
-              <p>📞 +1 (555) 123-4567</p>
-              <p>📍 123 Urban Plaza, Green City, GC 12345</p>
+              <p className="flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
+                  <img src={EmailIcon} alt="Email" className="w-5 h-5" />
+                </span>
+                info@slmplanning.com
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
+                  <img src={PhoneIcon} alt="Phone" className="w-5 h-5" />
+                </span>
+                +1 (555) 123-4567
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
+                  <img src={AddressIcon} alt="Address" className="w-5 h-5" />
+                </span>
+                123 Urban Plaza, Green City, GC 12345
+              </p>
             </div>
           </div>
 
@@ -52,7 +70,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-slm-green-700 mt-8 pt-8 text-center text-slm-green-100">
-          <p>&copy; 2024 SLM Planning Firm. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} SLM Planning Firm. All rights reserved.</p>
         </div>
       </div>
     </footer>
