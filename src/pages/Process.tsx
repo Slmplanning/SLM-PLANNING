@@ -2,6 +2,22 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+// Import unique images for each process step
+import LandscapeArchitectureImg from "@/Assets/Landscape Architecture (1).jpg";
+import DevelopmentControlImg from "@/Assets/Development Control & Planning Advisory.png";
+import UrbanDesignImg2 from "@/Assets/Urban design (2).jpg";
+import UrbanDesignImg3 from "@/Assets/urban design (3).jpg";
+import ThreeDRenderingImg from "@/Assets/3D render 1.jpg";
+import UrbanPlanningImg from "@/Assets/urban planning.jpg";
+
+const processImages = [
+  LandscapeArchitectureImg, // 01 Initial Consultation
+  DevelopmentControlImg,   // 02 Research & Analysis
+  UrbanDesignImg2,         // 03 Conceptual Design
+  UrbanDesignImg3,         // 04 Detailed Planning
+  ThreeDRenderingImg,      // 05 Implementation Oversight
+  UrbanPlanningImg         // 06 Post-Completion Review
+];
 
 const Process = () => {
   const processSteps = [
@@ -15,7 +31,6 @@ const Process = () => {
         "Project scope definition",
         "Timeline and budget establishment"
       ],
-      icon: "🤝",
       duration: "1-2 weeks"
     },
     {
@@ -28,7 +43,6 @@ const Process = () => {
         "Community engagement sessions",
         "Environmental impact assessment"
       ],
-      icon: "🔍",
       duration: "2-4 weeks"
     },
     {
@@ -41,7 +55,6 @@ const Process = () => {
         "Alternative scenario development",
         "Client feedback integration"
       ],
-      icon: "💡",
       duration: "3-5 weeks"
     },
     {
@@ -54,7 +67,6 @@ const Process = () => {
         "Implementation strategies",
         "Cost estimation and phasing"
       ],
-      icon: "📐",
       duration: "4-8 weeks"
     },
     {
@@ -67,7 +79,6 @@ const Process = () => {
         "Stakeholder coordination",
         "Issue resolution and modifications"
       ],
-      icon: "🏗️",
       duration: "Project dependent"
     },
     {
@@ -80,7 +91,6 @@ const Process = () => {
         "Lessons learned documentation",
         "Ongoing maintenance planning"
       ],
-      icon: "✅",
       duration: "Ongoing"
     }
   ];
@@ -88,23 +98,19 @@ const Process = () => {
   const principles = [
     {
       title: "Transparency",
-      description: "Open communication and clear documentation throughout every phase of the project.",
-      icon: "👁️"
+      description: "Open communication and clear documentation throughout every phase of the project."
     },
     {
       title: "Collaboration",
-      description: "Active involvement of all stakeholders in the planning and design process.",
-      icon: "🤝"
+      description: "Active involvement of all stakeholders in the planning and design process."
     },
     {
       title: "Innovation",
-      description: "Leveraging cutting-edge tools and methodologies to solve complex challenges.",
-      icon: "🚀"
+      description: "Leveraging cutting-edge tools and methodologies to solve complex challenges."
     },
     {
       title: "Sustainability",
-      description: "Environmental stewardship and long-term thinking in every decision.",
-      icon: "🌱"
+      description: "Environmental stewardship and long-term thinking in every decision."
     }
   ];
 
@@ -177,17 +183,17 @@ const Process = () => {
       {/* Process Steps */}
       <section className="py-0 pb-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-16">
+          <div className="space-y-16 relative">
+            {/* Interlinking arrows for process flow */}
             {processSteps.map((step, index) => (
-              <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}>
-                <div className="lg:w-1/2">
-                  <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <div key={index} className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center relative`}> 
+                <div className="lg:w-1/2 w-full">
+                  <Card className="border-0 shadow-xl hover:shadow-2xl transition-shadow duration-300 animate-fade-in-up">
                     <CardHeader>
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-16 h-16 bg-slm-green-600 rounded-full flex items-center justify-center">
                           <span className="text-white font-bold text-xl">{step.step}</span>
                         </div>
-                        <div className="text-4xl">{step.icon}</div>
                       </div>
                       <CardTitle className="font-playfair text-2xl text-slm-green-700 mb-2">
                         {step.title}
@@ -218,24 +224,48 @@ const Process = () => {
                     </CardContent>
                   </Card>
                 </div>
-                <div className="lg:w-1/2">
+                <div className="lg:w-1/2 w-full flex justify-center items-center relative">
                   <div 
-                    className="h-80 bg-cover bg-center rounded-lg shadow-xl"
+                    className="h-80 w-full max-w-xl bg-cover bg-center rounded-lg shadow-xl animate-process-img-fade"
                     style={{
-                      backgroundImage: `url('https://images.unsplash.com/photo-${
-                        index % 3 === 0 
-                          ? '1501854140801-50d01698950b' 
-                          : index % 3 === 1 
-                          ? '1506744038136-46273834b3fb'
-                          : '1615729947596-a598e5de0ab3'
-                      }?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')`
+                      backgroundImage: `url(${processImages[index]})`
                     }}
                   />
+                  {/* Draw an arrow to the next step except for the last step */}
+                  {index < processSteps.length - 1 && (
+                    <div className={`hidden lg:block absolute ${index % 2 === 0 ? 'right-[-40px]' : 'left-[-40px]'} top-1/2 z-10`} style={{transform: 'translateY(-50%)'}}>
+                      <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 20 Q30 0 55 20" stroke="#2B7151" strokeWidth="4" fill="none" markerEnd="url(#arrowhead)"/>
+                        <defs>
+                          <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <polygon points="0 0, 8 4, 0 8" fill="#2B7151" />
+                          </marker>
+                        </defs>
+                      </svg>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </div>
+        <style>{`
+          @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fade-in-up {
+            animation: fade-in-up 1s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          @keyframes process-img-fade {
+            0% { opacity: 0; transform: scale(0.96) rotate(-2deg); }
+            60% { opacity: 1; transform: scale(1.04) rotate(2deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+          }
+          .animate-process-img-fade {
+            animation: process-img-fade 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+        `}</style>
       </section>
 
       {/* Core Principles */}
@@ -254,7 +284,6 @@ const Process = () => {
             {principles.map((principle, index) => (
               <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardHeader>
-                  <div className="text-4xl mb-4">{principle.icon}</div>
                   <CardTitle className="font-playfair text-xl text-slm-green-700">
                     {principle.title}
                   </CardTitle>
