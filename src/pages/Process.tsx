@@ -9,6 +9,11 @@ import UrbanDesignImg2 from "@/Assets/Urban design (2).jpg";
 import UrbanDesignImg3 from "@/Assets/urban design (3).jpg";
 import ThreeDRenderingImg from "@/Assets/3D render 1.jpg";
 import UrbanPlanningImg from "@/Assets/urban planning.jpg";
+// Principle icons
+import TransparencyIcon from "@/Assets/transparency icon.png";
+import CollaborativeIcon from "@/Assets/collaborative approach.png";
+import InnovationIcon from "@/Assets/innovation icon.png";
+import SustainabilityIcon from "@/Assets/Sustainability icon.png";
 
 const processImages = [
   LandscapeArchitectureImg, // 01 Initial Consultation
@@ -17,6 +22,13 @@ const processImages = [
   UrbanDesignImg3,         // 04 Detailed Planning
   ThreeDRenderingImg,      // 05 Implementation Oversight
   UrbanPlanningImg         // 06 Post-Completion Review
+];
+
+const principleIcons = [
+  TransparencyIcon,
+  CollaborativeIcon,
+  InnovationIcon,
+  SustainabilityIcon
 ];
 
 const Process = () => {
@@ -98,19 +110,23 @@ const Process = () => {
   const principles = [
     {
       title: "Transparency",
-      description: "Open communication and clear documentation throughout every phase of the project."
+      description: "Open communication and clear documentation throughout every phase of the project.",
+      icon: principleIcons[0]
     },
     {
       title: "Collaboration",
-      description: "Active involvement of all stakeholders in the planning and design process."
+      description: "Active involvement of all stakeholders in the planning and design process.",
+      icon: principleIcons[1]
     },
     {
       title: "Innovation",
-      description: "Leveraging cutting-edge tools and methodologies to solve complex challenges."
+      description: "Leveraging cutting-edge tools and methodologies to solve complex challenges.",
+      icon: principleIcons[2]
     },
     {
       title: "Sustainability",
-      description: "Environmental stewardship and long-term thinking in every decision."
+      description: "Environmental stewardship and long-term thinking in every decision.",
+      icon: principleIcons[3]
     }
   ];
 
@@ -282,21 +298,44 @@ const Process = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {principles.map((principle, index) => (
-              <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <CardHeader>
-                  <CardTitle className="font-playfair text-xl text-slm-green-700">
-                    {principle.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="font-inter text-gray-600">
-                    {principle.description}
-                  </CardDescription>
-                </CardContent>
+              <Card key={index} className="text-center border-0 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white rounded-2xl animate-principle-pop group relative overflow-hidden">
+                <div className="flex flex-col items-center justify-center pt-8 pb-4 px-4">
+                  <div className="w-20 h-20 mb-4 rounded-full bg-gradient-to-tr from-slm-green-100 to-slm-green-300 shadow-lg flex items-center justify-center principle-icon-animate group-hover:scale-110 transition-transform duration-300">
+                    <img src={principle.icon} alt={principle.title + ' icon'} className="w-12 h-12 object-contain" />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="font-playfair text-xl text-slm-green-700 mb-2 group-hover:text-slm-green-900 transition-colors duration-300">
+                      {principle.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="font-inter text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                      {principle.description}
+                    </CardDescription>
+                  </CardContent>
+                </div>
+                {/* Decorative animated border */}
+                <div className="absolute inset-0 rounded-2xl pointer-events-none border-2 border-transparent group-hover:border-slm-green-600 transition-all duration-300 animate-principle-border" />
               </Card>
             ))}
           </div>
         </div>
+        <style>{`
+          @keyframes principle-pop {
+            0% { opacity: 0; transform: scale(0.92) rotate(-2deg); }
+            60% { opacity: 1; transform: scale(1.04) rotate(2deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+          }
+          .animate-principle-pop {
+            animation: principle-pop 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          .principle-icon-animate {
+            animation: principle-pop 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+          .animate-principle-border {
+            animation: principle-pop 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+        `}</style>
       </section>
 
       {/* Project Timeline */}
