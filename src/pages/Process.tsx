@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 // Import unique images for each process step
 import LandscapeArchitectureImg from "@/Assets/Landscape Architecture (1).jpg";
 import DevelopmentControlImg from "@/Assets/Development Control & Planning Advisory.png";
-import UrbanDesignImg2 from "@/Assets/Urban design (2).jpg";
-import UrbanDesignImg3 from "@/Assets/urban design (3).jpg";
+import TransitOrientedImg from "@/Assets/Transit-Oriented Development.jpg";
+import UrbanPlanning2Img from "@/Assets/urban planning (2).jpg";
 import ThreeDRenderingImg from "@/Assets/3D render 1.jpg";
 import UrbanPlanningImg from "@/Assets/urban planning.jpg";
 // Principle icons
@@ -18,8 +18,8 @@ import SustainabilityIcon from "@/Assets/Sustainability icon.png";
 const processImages = [
   LandscapeArchitectureImg, // 01 Initial Consultation
   DevelopmentControlImg,   // 02 Research & Analysis
-  UrbanDesignImg2,         // 03 Conceptual Design
-  UrbanDesignImg3,         // 04 Detailed Planning
+  TransitOrientedImg,      // 03 Conceptual Design
+  UrbanPlanning2Img,       // 04 Detailed Planning
   ThreeDRenderingImg,      // 05 Implementation Oversight
   UrbanPlanningImg         // 06 Post-Completion Review
 ];
@@ -285,7 +285,7 @@ const Process = () => {
       </section>
 
       {/* Core Principles */}
-      <section className="py-20 bg-slm-cream">
+      <section className="py-20" style={{ background: "#FCEFEF" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-slm-green-800 mb-4">
@@ -298,24 +298,36 @@ const Process = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {principles.map((principle, index) => (
-              <Card key={index} className="text-center border-0 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white rounded-2xl animate-principle-pop group relative overflow-hidden">
+              <Card key={index} className="text-center border-0 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-white rounded-2xl animate-principle-pop group relative overflow-visible">
                 <div className="flex flex-col items-center justify-center pt-8 pb-4 px-4">
-                  <div className="w-20 h-20 mb-4 rounded-full bg-gradient-to-tr from-slm-green-100 to-slm-green-300 shadow-lg flex items-center justify-center principle-icon-animate group-hover:scale-110 transition-transform duration-300">
-                    <img src={principle.icon} alt={principle.title + ' icon'} className="w-12 h-12 object-contain" />
+                  <div className="w-20 h-20 mb-4 flex items-center justify-center relative">
+                    {/* Spinning rectangle border */}
+                    <span className="absolute inset-0 rounded-lg border-2 border-[#712B29] animate-spin-slow z-0" style={{borderStyle:'solid'}}></span>
+                    <span className="relative z-10 w-16 h-16 flex items-center justify-center bg-white rounded-lg">
+                      <img src={principle.icon} alt={principle.title + ' icon'} className="w-12 h-12 object-contain" />
+                    </span>
                   </div>
                   <CardHeader>
-                    <CardTitle className="font-playfair text-xl text-slm-green-700 mb-2 group-hover:text-slm-green-900 transition-colors duration-300">
+                    <CardTitle className="font-playfair text-xl text-slm-green-700 mb-2 group-hover:text-white transition-colors duration-300">
                       {principle.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="font-inter text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                    <CardDescription className="font-inter text-gray-600 group-hover:text-white transition-colors duration-300">
                       {principle.description}
                     </CardDescription>
                   </CardContent>
                 </div>
-                {/* Decorative animated border */}
-                <div className="absolute inset-0 rounded-2xl pointer-events-none border-2 border-transparent group-hover:border-slm-green-600 transition-all duration-300 animate-principle-border" />
+                {/* Card hover: brown bg, white text */}
+                <style>{`
+                  .group:hover {
+                    background: #712B29 !important;
+                  }
+                  .group:hover .text-slm-green-700,
+                  .group:hover .text-gray-600 {
+                    color: #fff !important;
+                  }
+                `}</style>
               </Card>
             ))}
           </div>
@@ -329,11 +341,11 @@ const Process = () => {
           .animate-principle-pop {
             animation: principle-pop 1.1s cubic-bezier(0.22, 1, 0.36, 1);
           }
-          .principle-icon-animate {
-            animation: principle-pop 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+          .animate-spin-slow {
+            animation: spin 2.5s linear infinite;
           }
-          .animate-principle-border {
-            animation: principle-pop 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+          @keyframes spin {
+            100% { transform: rotate(360deg); }
           }
         `}</style>
       </section>
@@ -341,8 +353,10 @@ const Process = () => {
       {/* Project Timeline */}
       <section className="py-20 bg-slm-green-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-slm-green-800 mb-8">
-            Typical Project Timeline
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-slm-green-800 mb-8 relative inline-block">
+            Typical <span className="relative">Project
+              <span className="absolute left-0 right-0 -bottom-2 h-1 w-full bg-[#712B29] animate-underline-brown" style={{borderRadius:'2px'}}></span>
+            </span> Timeline
           </h2>
           <div className="bg-white rounded-lg shadow-lg p-8">
             <div className="space-y-6">
@@ -368,6 +382,17 @@ const Process = () => {
             </p>
           </div>
         </div>
+        <style>{`
+          @keyframes underline-brown {
+            0% { width: 0; left: 50%; right: 50%; opacity: 0.5; }
+            40% { width: 100%; left: 0; right: 0; opacity: 1; }
+            60% { width: 100%; left: 0; right: 0; opacity: 1; }
+            100% { width: 0; left: 50%; right: 50%; opacity: 0.5; }
+          }
+          .animate-underline-brown {
+            animation: underline-brown 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+          }
+        `}</style>
       </section>
 
       <Footer />
