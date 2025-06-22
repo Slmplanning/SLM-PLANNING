@@ -28,20 +28,39 @@ const Contact = () => {
 
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    toast({
-      title: "Message Sent",
-      description: "Thank you for contacting us. We'll get back to you within 24 hours.",
-    });
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
+    try {
+      const res = await fetch('/api/submitContact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      if (res.ok) {
+        toast({
+          title: "Message Sent",
+          description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: "There was an error submitting your message. Please try again.",
+          variant: "destructive"
+        });
+      }
+    } catch (err) {
+      toast({
+        title: "Network Error",
+        description: "Could not connect to the server.",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleChange = (field: string, value: string) => {
