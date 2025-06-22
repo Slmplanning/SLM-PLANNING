@@ -28,24 +28,38 @@ const Quote = () => {
 
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Quote request submitted:", formData);
-    toast({
-      title: "Quote Request Submitted",
-      description: "We'll review your request and get back to you within 24-48 hours.",
-    });
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      projectType: "",
-      projectScope: "",
-      timeline: "",
-      budgetRange: ""
-    });
+    try {
+      const response = await fetch("/api/submitQuote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to submit quote request");
+      }
+      toast({
+        title: "Quote Request Submitted",
+        description: "We'll review your request and get back to you within 24-48 hours.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        projectType: "",
+        projectScope: "",
+        timeline: "",
+        budgetRange: ""
+      });
+    } catch (error) {
+      toast({
+        title: "Submission Failed",
+        description: (error as Error).message || "An error occurred. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleChange = (field: string, value: string) => {
