@@ -27,7 +27,7 @@ export default defineType({
     }),
     defineField({
       name: 'mainImage',
-      title: 'Main image',
+      title: 'Cover Image',
       type: 'image',
       options: {
         hotspot: true,
@@ -40,6 +40,13 @@ export default defineType({
       of: [{type: 'reference', to: {type: 'category'}}],
     }),
     defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{type: 'string'}],
+      description: 'Add tags for filtering and search (e.g. planning, climate, etc.)',
+    }),
+    defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
@@ -48,6 +55,7 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      description: 'Main content. You can add text, images, and more.',
     }),
   ],
 
