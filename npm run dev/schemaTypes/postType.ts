@@ -4,6 +4,7 @@ export const postType = defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
+  description: 'Blog posts for the SLM website. Use this section to create and manage articles for the blog.',
   fields: [
     defineField({
       name: 'title',
