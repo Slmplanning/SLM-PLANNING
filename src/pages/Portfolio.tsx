@@ -3,78 +3,55 @@ import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { sanityClient } from "@/lib/sanityClient";
+
+const HARDCODED_CATEGORIES = [
+  "All",
+  "Urban Design",
+  "Urban Planning",
+  "3D Rendering",
+  "Landscape Architecture"
+];
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("All");
-  
-  const projects = [
-    {
-      title: "Riverside Green District",
-      category: "Urban Design",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "A 50-acre mixed-use development integrating sustainable housing, commercial spaces, and green infrastructure.",
-      client: "Metropolitan Development Authority",
-      year: "2023",
-      tags: ["Mixed-Use", "Sustainable", "Waterfront"]
-    },
-    {
-      title: "Heritage Square Revitalization",
-      category: "Urban Planning",
-      image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Comprehensive planning strategy to revitalize a historic downtown district while preserving cultural heritage.",
-      client: "City Planning Commission",
-      year: "2023",
-      tags: ["Historic", "Downtown", "Cultural"]
-    },
-    {
-      title: "EcoCity Visualization",
-      category: "3D Rendering",
-      image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Photorealistic visualizations for a proposed sustainable city development in Southeast Asia.",
-      client: "Green Development International",
-      year: "2023",
-      tags: ["Futuristic", "Sustainable", "International"]
-    },
-    {
-      title: "Central Park Restoration",
-      category: "Landscape Architecture",
-      image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Ecological restoration and redesign of a 200-acre urban park with native plantings and wetland systems.",
-      client: "Parks & Recreation Department",
-      year: "2022",
-      tags: ["Restoration", "Wetlands", "Recreation"]
-    },
-    {
-      title: "Smart Transit Hub",
-      category: "Urban Design",
-      image: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Multi-modal transportation center design incorporating smart technology and sustainable features.",
-      client: "Regional Transit Authority",
-      year: "2022",
-      tags: ["Transit", "Smart City", "Technology"]
-    },
-    {
-      title: "Coastal Resilience Plan",
-      category: "Urban Planning",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      description: "Comprehensive climate adaptation strategy for coastal communities facing sea-level rise.",
-      client: "Coastal Protection Alliance",
-      year: "2022",
-      tags: ["Climate", "Resilience", "Coastal"]
-    }
-  ];
+  const [projects, setProjects] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const categories = ["All", "Urban Design", "Urban Planning", "3D Rendering", "Landscape Architecture"];
-  
-  const filteredProjects = filter === "All" 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+  useEffect(() => {
+    const fetchProjects = async () => {
+      setLoading(true);
+      const query = `*[_type == "project"] | order(year desc){
+        _id,
+        title,
+        description,
+        "category": categories[0]->title,
+        mainImage,
+        year,
+        tags,
+      }`;
+      try {
+        const data = await sanityClient.fetch(query);
+        setProjects(data);
+      } catch (err) {
+        setProjects([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  const categories = HARDCODED_CATEGORIES;
+
+  const filteredProjects = filter === "All"
+    ? projects
+    : projects.filter((project) => project.category === filter);
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
       {/* Hero Section */}
       <section className="relative h-[38rem] flex items-center justify-center overflow-hidden">
         <HeroCarousel heightClass="h-[38rem]" />
@@ -146,55 +123,58 @@ const Portfolio = () => {
       {/* Projects Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
-              <Card 
-                key={index} 
-                className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg overflow-hidden"
-              >
-                <div className="relative overflow-hidden">
-                  <div 
-                    className="h-64 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                    style={{ backgroundImage: `url(${project.image})` }}
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-slm-green-600 text-white">
-                      {project.category}
-                    </Badge>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <Badge variant="secondary" className="bg-white/90 text-slm-green-700">
-                      {project.year}
-                    </Badge>
-                  </div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="font-playfair text-xl text-slm-green-700">
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className="font-inter text-slm-brown-600 font-medium">
-                    {project.client}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-inter text-gray-600 mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge 
-                        key={tagIndex} 
-                        variant="outline" 
-                        className="text-xs border-slm-green-300 text-slm-green-600"
-                      >
-                        {tag}
+          {loading ? (
+            <div className="text-center text-slm-green-700 py-12">Loading projects...</div>
+          ) : filteredProjects.length === 0 ? (
+            <div className="text-center text-slm-green-700 py-12">No projects found.</div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project) => (
+                <Card
+                  key={project._id}
+                  className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg overflow-hidden"
+                >
+                  <div className="relative overflow-hidden">
+                    <div
+                      className="h-64 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                      style={{ backgroundImage: `url(${project.mainImage?.asset?._ref ? sanityImageUrl(project.mainImage) : ''})` }}
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge className="bg-slm-green-600 text-white">
+                        {project.category}
                       </Badge>
-                    ))}
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <Badge variant="secondary" className="bg-white/90 text-slm-green-700">
+                        {project.year}
+                      </Badge>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  <CardHeader>
+                    <CardTitle className="font-playfair text-xl text-slm-green-700">
+                      {project.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="font-inter text-gray-600 mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags?.map((tag: string, tagIndex: number) => (
+                        <Badge
+                          key={tagIndex}
+                          variant="outline"
+                          className="text-xs border-slm-green-300 text-slm-green-600"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -239,3 +219,12 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+
+// Helper for Sanity image URLs
+function sanityImageUrl(image: any) {
+  if (!image?.asset?._ref) return '';
+  // Basic Sanity CDN URL builder for images
+  const ref = image.asset._ref;
+  const [, id, dimension, format] = ref.split('-');
+  return `https://cdn.sanity.io/images/3qxalk7v/production/${id}-${dimension}.${format}`;
+}
