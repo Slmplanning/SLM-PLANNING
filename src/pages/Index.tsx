@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HeroCarousel from "@/components/HeroCarousel";
 import TrustedCarousel from "@/components/TrustedCarousel";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import integratedUrbanSolutionsImg from "@/Assets/intergrated urban solutions.jpg";
 import contextualLandscapeDesignImg from "@/Assets/contextual landscape design.jpg";
 import storytellingImg from "@/Assets/3D storytelling.jpg";
@@ -197,6 +198,8 @@ const Index = () => {
           <TrustedCarousel />
         </div>
       </section>
+
+      <TestimonialsSection />
 
       {/* Call to Action */}
       <section className="py-20 bg-slm-green-600">
