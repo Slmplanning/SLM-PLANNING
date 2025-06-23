@@ -267,19 +267,19 @@ const Services = () => {
             <p className="font-inter text-lg text-gray-700 animate-fade-in delay-100">Supporting services that complement our core offerings</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up">
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up additional-service-card">
               <h3 className="font-playfair text-xl font-bold text-slm-green-700 mb-2">Community Engagement</h3>
               <p className="font-inter text-gray-700">Facilitated workshops, public meetings, and stakeholder consultation processes.</p>
             </div>
-            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-100">
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-100 additional-service-card">
               <h3 className="font-playfair text-xl font-bold text-slm-green-700 mb-2">Feasibility Studies</h3>
               <p className="font-inter text-gray-700">Comprehensive analysis of project viability including financial and environmental factors.</p>
             </div>
-            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-200">
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-200 additional-service-card">
               <h3 className="font-playfair text-xl font-bold text-slm-green-700 mb-2">Project Management</h3>
               <p className="font-inter text-gray-700">End-to-end project coordination from initial concept through implementation.</p>
             </div>
-            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-300">
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-300 additional-service-card">
               <h3 className="font-playfair text-xl font-bold text-slm-green-700 mb-2">Regulatory Compliance</h3>
               <p className="font-inter text-gray-700">Ensuring all designs meet local building codes and environmental regulations.</p>
             </div>
@@ -296,6 +296,13 @@ const Services = () => {
           .delay-100 { animation-delay: 0.1s; }
           .delay-200 { animation-delay: 0.2s; }
           .delay-300 { animation-delay: 0.3s; }
+          .additional-service-card:hover {
+            background: #712B29 !important;
+          }
+          .additional-service-card:hover h3,
+          .additional-service-card:hover p {
+            color: #fff !important;
+          }
         `}</style>
       </section>
 
