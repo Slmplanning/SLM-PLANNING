@@ -17,6 +17,7 @@ import LandscapeArchitecture from "./pages/LandscapeArchitecture";
 import ThreeDRendering from "./pages/ThreeDRendering";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
+import { Analytics } from "@vercel/analytics/react";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      <Analytics />
     </TooltipProvider>
   </QueryClientProvider>
 );
