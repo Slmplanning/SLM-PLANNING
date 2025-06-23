@@ -35,14 +35,6 @@ const Index = () => {
     },
   ];
 
-  const clients = [
-    "Global NGO Alliance",
-    "Metropolitan Planning Board",
-    "EcoVision Corporation",
-    "Urban Futures Initiative",
-    "Green Development Partners"
-  ];
-
   const TimelineCard = ({ number, title, description, image }: { number: number; title: string; description: string; image: string }) => {
     const [hovered, setHovered] = useState(false);
     const [active, setActive] = useState(false);
@@ -130,22 +122,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Trusted by Leading Organizations Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-slm-green-700 mb-2">Trusted by Leading Organizations</h2>
-          <p className="font-inter text-lg text-gray-700 mb-8">We're proud to partner with forward-thinking organizations worldwide.</p>
-          <TrustedCarousel />
-          <div className="flex flex-wrap justify-center gap-6 mt-8">
-            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">Global NGO Alliance</span>
-            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">Metropolitan Planning Board</span>
-            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">EcoVision Corporation</span>
-            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">Urban Futures Initiative</span>
-            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">Green Development Partners</span>
-          </div>
-        </div>
-      </section>
-
       {/* Introduction Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -210,6 +186,15 @@ const Index = () => {
           <div className="flex-1 flex justify-center">
             <img src={aTeamCollabImg} alt="A Team Collaborating on an Urban Masterplan" className="rounded-xl shadow-lg w-full max-w-md object-cover" />
           </div>
+        </div>
+      </section>
+
+      {/* Trusted by Leading Organizations Section (moved below Why Choose Us, no client name placeholders) */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-slm-green-700 mb-2">Trusted by Leading Organizations</h2>
+          <p className="font-inter text-lg text-gray-700 mb-8">We're proud to partner with forward-thinking organizations worldwide.</p>
+          <TrustedCarousel />
         </div>
       </section>
 

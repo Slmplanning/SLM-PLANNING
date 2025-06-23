@@ -259,8 +259,48 @@ const Services = () => {
         </div>
       </section>
 
-      {/* How We Work Section */}
-      <section className="py-20" style={{ background: '#FCEFEF' }}>
+      {/* Additional Services Section (standalone, bg-[#FCEFEF]) */}
+      <section className="py-16 bg-[#FCEFEF]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-slm-green-800 mb-2 animate-fade-in">Additional Services</h2>
+            <p className="font-inter text-lg text-gray-700 animate-fade-in delay-100">Supporting services that complement our core offerings</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up">
+              <h3 className="font-playfair text-xl font-bold text-slm-green-700 mb-2">Community Engagement</h3>
+              <p className="font-inter text-gray-700">Facilitated workshops, public meetings, and stakeholder consultation processes.</p>
+            </div>
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-100">
+              <h3 className="font-playfair text-xl font-bold text-slm-green-700 mb-2">Feasibility Studies</h3>
+              <p className="font-inter text-gray-700">Comprehensive analysis of project viability including financial and environmental factors.</p>
+            </div>
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-200">
+              <h3 className="font-playfair text-xl font-bold text-slm-green-700 mb-2">Project Management</h3>
+              <p className="font-inter text-gray-700">End-to-end project coordination from initial concept through implementation.</p>
+            </div>
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center animate-fade-in-up delay-300">
+              <h3 className="font-playfair text-xl font-bold text-slm-green-700 mb-2">Regulatory Compliance</h3>
+              <p className="font-inter text-gray-700">Ensuring all designs meet local building codes and environmental regulations.</p>
+            </div>
+          </div>
+        </div>
+        <style>{`
+          @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fade-in-up {
+            animation: fade-in-up 0.8s cubic-bezier(0.4,0,0.2,1) both;
+          }
+          .delay-100 { animation-delay: 0.1s; }
+          .delay-200 { animation-delay: 0.2s; }
+          .delay-300 { animation-delay: 0.3s; }
+        `}</style>
+      </section>
+
+      {/* How We Work Section (now white bg) */}
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-slm-green-800 mb-4">How We Work</h2>
@@ -268,25 +308,51 @@ const Services = () => {
               Our collaborative approach ensures every project meets your unique needs while exceeding sustainability and design standards.
             </p>
           </div>
-          <AnimatedProcessFlow />
+          {/* Process Steps Flow with interlinked cards */}
+          <div className="relative flex flex-col md:flex-row justify-center items-stretch gap-8 md:gap-12 animate-fade-in-up">
+            {processSteps.map((step, idx) => (
+              <React.Fragment key={step.number}>
+                <div className="flex-1 bg-white rounded-2xl shadow-md p-8 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2 relative z-10">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-full bg-slm-green-600 text-white font-bold text-2xl mb-4 border-4 border-white shadow">
+                    {step.number}
+                  </div>
+                  <h3 className="font-playfair text-xl font-bold text-slm-green-800 mb-2">{step.title}</h3>
+                  <p className="font-inter text-gray-700">{step.desc}</p>
+                </div>
+                {/* Draw connector except after last card */}
+                {idx < processSteps.length - 1 && (
+                  <div className="hidden md:block absolute top-1/2 left-full transform -translate-y-1/2 md:-translate-x-1/2 w-12 h-1 bg-slm-green-200 z-0" style={{marginLeft: '-24px'}} />
+                )}
+              </React.Fragment>
+            ))}
+          </div>
           <div className="text-center mt-10">
             <Button asChild size="lg" className="bg-slm-green-600 hover:bg-slm-green-700 text-white font-semibold px-8 py-3">
               <Link to="/process">View Our Complete Process</Link>
             </Button>
           </div>
         </div>
+        <style>{`
+          @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fade-in-up {
+            animation: fade-in-up 0.8s cubic-bezier(0.4,0,0.2,1) both;
+          }
+        `}</style>
       </section>
 
-      {/* Ready to Get Started Section */}
-      <section className="py-16 bg-white">
+      {/* Ready to Get Started Section (now matches blog Stay Updated) */}
+      <section className="py-16 bg-slm-green-600">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-slm-green-800 mb-4">Ready to Get Started?</h2>
-          <p className="font-inter text-lg text-gray-700 mb-8">Let's discuss how our services can help bring your vision to life.</p>
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
+          <p className="font-inter text-lg md:text-xl text-slm-green-100 mb-8">Let's discuss how our services can help bring your vision to life.</p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button asChild size="lg" className="bg-slm-green-600 hover:bg-slm-green-700 text-white font-semibold px-8 py-3 w-full sm:w-auto">
+            <Button asChild size="lg" className="bg-white text-slm-green-600 hover:bg-slm-cream font-semibold px-8 py-3 w-full sm:w-auto">
               <Link to="/quote">Request a Quote</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-slm-green-600 text-slm-green-700 font-semibold px-8 py-3 w-full sm:w-auto">
+            <Button asChild size="lg" variant="outline" className="border-slm-green-200 text-white hover:bg-white hover:text-slm-green-600 font-semibold px-8 py-3 w-full sm:w-auto">
               <Link to="/contact">Schedule Consultation</Link>
             </Button>
           </div>
@@ -297,60 +363,5 @@ const Services = () => {
     </div>
   );
 };
-
-function AnimatedProcessFlow() {
-  const containerRef = useRef(null);
-  // Always animate arrows when in view, even if user is already on the page
-  const [triggered, setTriggered] = useState(false);
-  useEffect(() => {
-    if (!triggered && containerRef.current) {
-      setTriggered(true);
-    }
-  }, [triggered]);
-  return (
-    <div ref={containerRef} className="relative flex flex-col md:flex-row justify-center items-stretch gap-8 w-full">
-      {processSteps.map((step, idx) => (
-        <React.Fragment key={step.number}>
-          <div
-            className={`flex-1 bg-white rounded-2xl shadow p-8 flex flex-col items-center transition-all duration-500 ease-out
-              animate-process-step animate-delay-${idx}
-              hover:scale-105 hover:shadow-2xl`}
-            style={{ zIndex: 2 }}
-          >
-            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-slm-green-600 text-white text-2xl font-bold mb-4">{step.number}</div>
-            <h3 className="font-playfair text-xl font-semibold text-slm-green-700 mb-2">{step.title}</h3>
-            <p className="font-inter text-gray-600 text-center">{step.desc}</p>
-          </div>
-          {idx < processSteps.length - 1 && (
-            <div className="hidden md:flex items-center justify-center" style={{ zIndex: 1 }}>
-              <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`animate-draw-arrow animate-delay-arrow-${idx} w-16 h-6 ${triggered ? 'animate' : ''}`}>
-                <path d="M4 12h48m0 0l-6-6m6 6l-6 6" stroke="#3B6B3B" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-          )}
-        </React.Fragment>
-      ))}
-      <style>{`
-        .animate-process-step {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-        .animate-delay-0 { transition-delay: 0.1s; }
-        .animate-delay-1 { transition-delay: 0.3s; }
-        .animate-delay-2 { transition-delay: 0.5s; }
-        .animate-draw-arrow {
-          stroke-dasharray: 80;
-          stroke-dashoffset: 80;
-          animation: draw-arrow 0.7s cubic-bezier(0.4,0,0.2,1) forwards;
-        }
-        .animate-delay-arrow-0 { animation-delay: 0.3s; }
-        .animate-delay-arrow-1 { animation-delay: 0.5s; }
-        @keyframes draw-arrow {
-          to { stroke-dashoffset: 0; }
-        }
-      `}</style>
-    </div>
-  );
-}
 
 export default Services;
