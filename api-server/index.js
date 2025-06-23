@@ -54,6 +54,19 @@ app.post('/api/submitQuote', async (req, res) => {
   res.status(200).json({ success: true });
 });
 
+app.post('/api/subscribeNewsletter', async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ error: 'Email is required' });
+  }
+  const { error } = await supabase.from('newsletter_subscribers').insert([{ email }]);
+  if (error) {
+    console.error('Supabase error (newsletter_subscribers):', error);
+    return res.status(500).json({ error: error.message });
+  }
+  res.status(200).json({ success: true });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`API server running on port ${PORT}`);

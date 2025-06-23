@@ -29,5 +29,9 @@
     "esModuleInterop": true,
     "composite": true
   },
-  "include": ["src", "src/declarations.d.ts"]
+  "include": [
+    "src",
+    "src/declarations.d.ts",
+    "react-router-slm/app/sanity/client.ts"
+  ]
 }
