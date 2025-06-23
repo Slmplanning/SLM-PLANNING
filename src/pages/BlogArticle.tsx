@@ -59,9 +59,6 @@ const BlogArticle = () => {
         {post.tags && post.tags.map((tag) => (
           <span key={tag} className="bg-slm-green-100 text-slm-green-700 px-3 py-1 rounded-full text-xs font-semibold">{tag}</span>
         ))}
-        {post.categories && post.categories.map((cat) => (
-          <span key={cat.title} className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-semibold">{cat.title}</span>
-        ))}
       </div>
       <div className="prose max-w-none">
         <p className="text-gray-500 text-sm mb-2">

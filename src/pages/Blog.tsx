@@ -5,6 +5,7 @@ import UrbanPlanningCarousel from "@/components/UrbanPlanningCarousel";
 import { Button } from "@/components/ui/button";
 import UrbanPlanningImg from "@/Assets/urban planning.jpg";
 import { client } from "../../react-router-slm/app/sanity/client";
+import intersection from "lodash/intersection";
 
 const blogTopics = [
   "All",
@@ -17,7 +18,7 @@ const blogTopics = [
   "Climate",
 ];
 
-const POSTS_QUERY = `*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, image, body, tag}`;
+const POSTS_QUERY = `*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt, image, body, tag, categories[]->{title}}`;
 
 const Blog = () => {
   const [selectedTopic, setSelectedTopic] = useState<string>("All");
@@ -34,14 +35,17 @@ const Blog = () => {
   const filteredArticles =
     selectedTopic === "All"
       ? posts
-      : posts.filter(
-          (article) =>
-            (article.tag && article.tag.toLowerCase() === selectedTopic.toLowerCase()) ||
-            (selectedTopic === "3D Render" && article.tag && article.tag.toLowerCase().includes("3d")) ||
-            (selectedTopic === "Landscape Architecture" && article.tag && article.tag.toLowerCase().includes("landscape"))
-        );
+      : posts.filter((article) => {
+          // Check if any category title matches the selected topic
+          if (article.categories && Array.isArray(article.categories)) {
+            return article.categories.some((cat: any) =>
+              cat.title && cat.title.toLowerCase() === selectedTopic.toLowerCase()
+            );
+          }
+          return false;
+        });
 
-  const featuredArticle = posts[0];
+  const featuredArticle = filteredArticles[0];
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
