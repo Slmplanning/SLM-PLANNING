@@ -154,6 +154,13 @@ const Portfolio = () => {
                     <CardTitle className="font-playfair text-xl text-slm-green-700">
                       {project.title}
                     </CardTitle>
+                    {project.location && (
+                      <div className="mb-2">
+                        <Badge className="bg-slm-brown-600 text-white text-xs font-inter font-medium">
+                          {project.location}
+                        </Badge>
+                      </div>
+                    )}
                   </CardHeader>
                   <CardContent>
                     <p className="font-inter text-gray-600 mb-4 leading-relaxed">

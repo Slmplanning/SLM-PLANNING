@@ -59,6 +59,13 @@ export const projectType = defineType({
       of: [{type: 'string'}],
       options: {layout: 'tags'},
     }),
+    defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      description: 'City, region, or country where the project is located',
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {
