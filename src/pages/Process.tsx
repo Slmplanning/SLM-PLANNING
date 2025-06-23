@@ -2,33 +2,21 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-// Import unique images for each process step
-import LandscapeArchitectureImg from "@/Assets/Landscape Architecture (1).jpg";
-import DevelopmentControlImg from "@/Assets/Development Control & Planning Advisory.png";
-import TransitOrientedImg from "@/Assets/Transit-Oriented Development.jpg";
-import UrbanPlanning2Img from "@/Assets/urban planning (2).jpg";
-import ThreeDRenderingImg from "@/Assets/3D render 1.jpg";
-import UrbanPlanningImg from "@/Assets/urban planning.jpg";
-// Principle icons
-import TransparencyIcon from "@/Assets/transparency icon.png";
-import CollaborativeIcon from "@/Assets/collaborative approach.png";
-import InnovationIcon from "@/Assets/innovation icon.png";
-import SustainabilityIcon from "@/Assets/Sustainability icon.png";
 
 const processImages = [
-  LandscapeArchitectureImg, // 01 Initial Consultation
-  DevelopmentControlImg,   // 02 Research & Analysis
-  TransitOrientedImg,      // 03 Conceptual Design
-  UrbanPlanning2Img,       // 04 Detailed Planning
-  ThreeDRenderingImg,      // 05 Implementation Oversight
-  UrbanPlanningImg         // 06 Post-Completion Review
+  "/Assets/Landscape Architecture (1).jpg", // 01 Initial Consultation
+  "/Assets/Development Control & Planning Advisory.png",   // 02 Research & Analysis
+  "/Assets/Transit-Oriented Development.jpg",      // 03 Conceptual Design
+  "/Assets/urban planning (2).jpg",       // 04 Detailed Planning
+  "/Assets/3D render 1.jpg",      // 05 Implementation Oversight
+  "/Assets/urban planning.jpg"         // 06 Post-Completion Review
 ];
 
 const principleIcons = [
-  TransparencyIcon,
-  CollaborativeIcon,
-  InnovationIcon,
-  SustainabilityIcon
+  "/Assets/transparency icon.png",
+  "/Assets/collaborative approach.png",
+  "/Assets/innovation icon.png",
+  "/Assets/Sustainability icon.png"
 ];
 
 const Process = () => {

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ParkOpenSpaceImg from "@/Assets/Landscape Architecture.jpg";
-import EcologicalRestorationImg from "@/Assets/Landscape Architecture (1).jpg";
-import GreenInfrastructureImg from "@/Assets/Landscape Architecture (2).jpg";
 
 const images = [
-  ParkOpenSpaceImg,
-  EcologicalRestorationImg,
-  GreenInfrastructureImg,
+  "/Assets/Landscape Architecture.jpg",
+  "/Assets/Landscape Architecture (1).jpg",
+  "/Assets/Landscape Architecture (2).jpg",
 ];
 
 const LandscapeArchitectureCarousel = () => {

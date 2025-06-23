@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-// Use relative import for logo to fix Jest static asset mocking
-import slmLogo from "../Assets/slm-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +47,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img
-              src={slmLogo}
+              src="/Assets/slm-logo.png"
               alt="SLM Logo"
               className="w-12 h-12 object-contain rounded-lg shadow bg-white"
               style={{ maxWidth: "48px", maxHeight: "48px" }}

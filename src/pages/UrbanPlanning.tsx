@@ -2,60 +2,48 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import UrbanPlanningImg from "@/Assets/urban planning.jpg";
-import UrbanPlanningTeamImg from "@/Assets/urban planning (2).jpg";
-import UrbanPlanningBenefitsImg from "@/Assets/urban planning (3).jpg";
 import React from "react";
 import UrbanPlanningCarousel from "@/components/UrbanPlanningCarousel";
-// Import images for each service card
-import MasterPlanningImg from "@/Assets/master_planning.jpg";
-import ZoningLandUseImg from "@/Assets/Zoning & Land Use.jpg";
-import CommunityEngagementImg from "@/Assets/community engagement.png";
-import PolicyDevelopmentImg from "@/Assets/Policy Development.png";
-import SpatialAnalysisImg from "@/Assets/Spatial Analysis & GIS Mapping.jpg";
-import DevelopmentControlImg from "@/Assets/Development Control & Planning Advisory.png";
-import TrainingImg from "@/Assets/training and capacity building.jpg";
-import EnvironmentalPlanningImg from "@/Assets/Environmental & Sustainable Planning.jpg";
 
 const urbanPlanningServices = [
 	{
 		title: "Master Planning",
-		image: MasterPlanningImg,
+		image: "/Assets/master_planning.jpg",
 		desc: "Comprehensive long-range planning for communities, districts, and regions that balance growth with sustainability.",
 	},
 	{
 		title: "Zoning & Land Use",
-		image: ZoningLandUseImg,
+		image: "/Assets/Zoning & Land Use.jpg",
 		desc: "Strategic land use planning and zoning code development that supports community vision and economic development.",
 	},
 	{
 		title: "Community Engagement",
-		image: CommunityEngagementImg,
+		image: "/Assets/community engagement.png",
 		desc: "Inclusive planning processes that meaningfully involve residents, stakeholders, and community organizations.",
 	},
 	{
 		title: "Policy Development",
-		image: PolicyDevelopmentImg,
+		image: "/Assets/Policy Development.png",
 		desc: "Research-based policy recommendations that address local challenges and promote sustainable development.",
 	},
 	{
 		title: "Spatial Analysis & GIS Mapping",
-		image: SpatialAnalysisImg,
+		image: "/Assets/Spatial Analysis & GIS Mapping.jpg",
 		desc: "Advanced spatial data analysis and mapping to inform evidence-based planning decisions.",
 	},
 	{
 		title: "Development Control & Planning Advisory",
-		image: DevelopmentControlImg,
+		image: "/Assets/Development Control & Planning Advisory.png",
 		desc: "Guidance on development proposals, compliance, and regulatory frameworks for sustainable growth.",
 	},
 	{
 		title: "Training, Research & Capacity Building",
-		image: TrainingImg,
+		image: "/Assets/training and capacity building.jpg",
 		desc: "Workshops, research, and training programs to empower communities and professionals.",
 	},
 	{
 		title: "Environmental & Sustainable Planning",
-		image: EnvironmentalPlanningImg,
+		image: "/Assets/Environmental & Sustainable Planning.jpg",
 		desc: "Planning solutions that prioritize environmental stewardship and long-term sustainability.",
 	},
 ];
@@ -146,7 +134,7 @@ const UrbanPlanning = () => (
 					</Button>
 				</div>
 				<div className="flex-1 flex justify-center items-center relative">
-					<img src={UrbanPlanningTeamImg} alt="Urban Planning Team" className="w-full max-w-md rounded-2xl shadow-2xl urban-img-animate border-4 border-[#FCEFEF]" />
+					<img src="/Assets/urban planning (2).jpg" alt="Urban Planning Team" className="w-full max-w-md rounded-2xl shadow-2xl urban-img-animate border-4 border-[#FCEFEF]" />
 				</div>
 			</div>
 		</section>
@@ -208,7 +196,7 @@ const UrbanPlanning = () => (
 		<section className="py-20 bg-white">
 			<div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-0">
 				<div className="flex-1 order-2 md:order-1 flex justify-center items-center relative">
-					<img src={UrbanPlanningBenefitsImg} alt="Urban Planning Benefits" className="w-full max-w-md rounded-2xl shadow-lg animate-fade-in-up" />
+					<img src="/Assets/urban planning (3).jpg" alt="Urban Planning Benefits" className="w-full max-w-md rounded-2xl shadow-lg animate-fade-in-up" />
 				</div>
 				<div className="flex-1 order-1 md:order-2">
 					<h3 className="font-playfair text-3xl md:text-4xl font-bold text-slm-green-700 mb-4">Benefits of Professional Planning</h3>

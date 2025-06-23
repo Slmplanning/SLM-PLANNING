@@ -5,44 +5,35 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import LandscapeArchitectureCarousel from "@/components/LandscapeArchitectureCarousel";
 
-// Updated images for landscape services
-import ParkOpenSpaceImg from "@/Assets/Park & Open Space Design.jpg";
-import EcologicalRestorationImg from "@/Assets/Ecological Restoration.jpg";
-import GreenInfrastructureImg from "@/Assets/Green Infrastructure Design.jpg";
-import NativePlantImg from "@/Assets/Native Plant Design.jpg";
-import CorporateCommercialImg from "@/Assets/Corporate & Commercial Landscaping.jpg";
-import GuidelinesPolicyImg from "@/Assets/Policy Development.png";
-import NatureLedImg from "@/Assets/Landscape Architecture (1).jpg";
-
 const landscapeServices = [
 	{
 		title: "Park & Open Space Design",
-		image: ParkOpenSpaceImg,
+		image: "/Assets/Park & Open Space Design.jpg",
 		desc: "Designing inclusive public parks, urban plazas, and recreational green spaces that enhance livability and wellbeing.",
 	},
 	{
 		title: "Ecological Restoration",
-		image: EcologicalRestorationImg,
+		image: "/Assets/Ecological Restoration.jpg",
 		desc: "Rehabilitating degraded landscapes by reintroducing native ecosystems and improving natural hydrology and habitat function.",
 	},
 	{
 		title: "Green Infrastructure Design",
-		image: GreenInfrastructureImg,
+		image: "/Assets/Green Infrastructure Design.jpg",
 		desc: "Implementing nature-based solutions like bioswales, green roofs, and permeable surfaces to manage stormwater and reduce urban heat.",
 	},
 	{
 		title: "Native Plant Design",
-		image: NativePlantImg,
+		image: "/Assets/Native Plant Design.jpg",
 		desc: "Using indigenous plant palettes to support local ecology, reduce maintenance costs, and enhance visual identity.",
 	},
 	{
 		title: "Corporate & Commercial Landscaping",
-		image: CorporateCommercialImg,
+		image: "/Assets/Corporate & Commercial Landscaping.jpg",
 		desc: "Designing branded, functional outdoor spaces for offices, retail centers, institutions, and mixed-use developments.",
 	},
 	{
 		title: "Landscape Guidelines & Policy Support",
-		image: GuidelinesPolicyImg,
+		image: "/Assets/Policy Development.png",
 		desc: "Developing landscape standards, open space strategies, and regulatory documents to guide resilient and equitable development.",
 	},
 ];
@@ -134,7 +125,7 @@ const LandscapeArchitecture = () => (
 				</div>
 				<div className="flex-1 order-2 md:order-2 flex justify-center items-center relative">
 					<img
-						src={NatureLedImg}
+						src="/Assets/Landscape Architecture (1).jpg"
 						alt="Nature-Led Design for Impactful Outdoor Environments"
 						className="w-full max-w-xs sm:max-w-md rounded-2xl shadow-2xl border-4 border-[#FCEFEF] object-cover object-center"
 					/>
@@ -206,7 +197,7 @@ const LandscapeArchitecture = () => (
 			<div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-0">
 				<div className="flex-1 order-1 md:order-1 flex justify-center items-center relative">
 					<img
-						src={GreenInfrastructureImg}
+						src="/Assets/Green Infrastructure Design.jpg"
 						alt="Landscape Benefits"
 						className="w-full max-w-md rounded-2xl shadow-lg animate-fade-in-up"
 					/>

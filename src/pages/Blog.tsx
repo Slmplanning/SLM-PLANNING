@@ -3,7 +3,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import UrbanPlanningCarousel from "@/components/UrbanPlanningCarousel";
 import { Button } from "@/components/ui/button";
-import UrbanPlanningImg from "@/Assets/urban planning.jpg";
 import { client } from "../../react-router-slm/app/sanity/client";
 import intersection from "lodash/intersection";
 
@@ -109,7 +108,7 @@ const Blog = () => {
                   src={
                     featuredArticle.image
                       ? featuredArticle.image.asset?.url
-                      : UrbanPlanningImg
+                      : "/Assets/urban planning.jpg"
                   }
                   alt={featuredArticle.title}
                   className="w-full h-full object-cover md:rounded-l-2xl"
@@ -194,7 +193,7 @@ const Blog = () => {
                 >
                   <div className="h-48 w-full overflow-hidden flex items-center justify-center bg-gray-100">
                     <img
-                      src={article.image ? article.image.asset?.url : UrbanPlanningImg}
+                      src={article.image ? article.image.asset?.url : "/Assets/urban planning.jpg"}
                       alt={article.title}
                       className="w-full h-full object-cover"
                     />

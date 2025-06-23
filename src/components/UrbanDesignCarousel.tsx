@@ -1,13 +1,11 @@
 import React from "react";
 
-// This carousel will only use images labeled 'urban design' in the Assets folder
-// Replace the image imports below with actual urban design images as needed
-import UrbanDesign1 from "@/Assets/Urban design.jpg";
-import UrbanDesign2 from "@/Assets/Urban design (1).jpg";
-import UrbanDesign3 from "@/Assets/Urban design (2).jpg";
-import UrbanDesign4 from "@/Assets/urban design (3).jpg";
-
-const images = [UrbanDesign1, UrbanDesign2, UrbanDesign3, UrbanDesign4];
+const images = [
+  "/Assets/Urban design.jpg",
+  "/Assets/Urban design (1).jpg",
+  "/Assets/Urban design (2).jpg",
+  "/Assets/urban design (3).jpg",
+];
 
 const UrbanDesignCarousel = ({ heightClass = "h-[38rem]" }) => {
   const [current, setCurrent] = React.useState(0);
@@ -18,13 +16,17 @@ const UrbanDesignCarousel = ({ heightClass = "h-[38rem]" }) => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0`}>
+    <div
+      className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0`}
+    >
       {images.map((img, idx) => (
         <img
           key={idx}
           src={img}
           alt={`Urban Design ${idx + 1}`}
-          className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${idx === current ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+          className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${
+            idx === current ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
           style={{ borderRadius: "0 0 2.5rem 2.5rem" }}
         />
       ))}
@@ -42,7 +44,9 @@ const UrbanDesignCarousel = ({ heightClass = "h-[38rem]" }) => {
         {images.map((_, idx) => (
           <span
             key={idx}
-            className={`block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${idx === current ? "bg-white" : "bg-white/40"} transition-all duration-300`}
+            className={`block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
+              idx === current ? "bg-white" : "bg-white/40"
+            } transition-all duration-300`}
           />
         ))}
       </div>

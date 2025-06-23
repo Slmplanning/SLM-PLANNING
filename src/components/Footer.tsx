@@ -1,8 +1,4 @@
 import { Link } from "react-router-dom";
-import slmLogo from "@/Assets/slm-logo.png";
-import EmailIcon from "@/Assets/email.png";
-import PhoneIcon from "@/Assets/phone icone.png";
-import AddressIcon from "@/Assets/address.png";
 
 const Footer = () => {
   return (
@@ -13,7 +9,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <img
-                src={slmLogo}
+                src="/Assets/slm-logo.png"
                 alt="SLM Logo"
                 className="w-10 h-10 object-contain rounded-lg shadow bg-white"
                 style={{ maxWidth: "40px", maxHeight: "40px" }}
@@ -27,19 +23,19 @@ const Footer = () => {
             <div className="space-y-2 text-slm-green-100">
               <p className="flex items-center gap-2">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                  <img src={EmailIcon} alt="Email" className="w-5 h-5" />
+                  <img src="/Assets/email.png" alt="Email" className="w-5 h-5" />
                 </span>
                 info@slmplanning.com
               </p>
               <p className="flex items-center gap-2">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                  <img src={PhoneIcon} alt="Phone" className="w-5 h-5" />
+                  <img src="/Assets/phone icone.png" alt="Phone" className="w-5 h-5" />
                 </span>
                 +1 (555) 123-4567
               </p>
               <p className="flex items-center gap-2">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                  <img src={AddressIcon} alt="Address" className="w-5 h-5" />
+                  <img src="/Assets/address.png" alt="Address" className="w-5 h-5" />
                 </span>
                 123 Urban Plaza, Green City, GC 12345
               </p>

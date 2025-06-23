@@ -6,33 +6,28 @@ import { Link } from "react-router-dom";
 import HeroCarousel from "@/components/HeroCarousel";
 import TrustedCarousel from "@/components/TrustedCarousel";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import integratedUrbanSolutionsImg from "@/Assets/intergrated urban solutions.jpg";
-import contextualLandscapeDesignImg from "@/Assets/contextual landscape design.jpg";
-import storytellingImg from "@/Assets/3D storytelling.jpg";
-import collaborativeDesignThinkingImg from "@/Assets/collaborative design thinking.jpg";
-import aTeamCollabImg from "@/Assets/A Team Collaborating on an Urban Masterplan.jpg";
 
 const Index = () => {
   const expertise = [
     {
       title: "Integrated Urban Solutions",
       description: "Holistic planning that unites infrastructure, mobility, and community for thriving cities.",
-      image: integratedUrbanSolutionsImg,
+      image: "/Assets/intergrated urban solutions.jpg",
     },
     {
       title: "Contextual Landscape Design",
       description: "Designs rooted in local ecology and culture, creating sustainable, beautiful outdoor spaces.",
-      image: contextualLandscapeDesignImg,
+      image: "/Assets/contextual landscape design.jpg",
     },
     {
       title: "3D Storytelling",
       description: "Immersive visualizations that bring your vision to life and communicate ideas powerfully.",
-      image: storytellingImg,
+      image: "/Assets/3D storytelling.jpg",
     },
     {
       title: "Collaborative Design Thinking",
       description: "Engaging stakeholders at every step to co-create innovative, people-centered solutions.",
-      image: collaborativeDesignThinkingImg,
+      image: "/Assets/collaborative design thinking.jpg",
     },
   ];
 
@@ -185,7 +180,7 @@ const Index = () => {
             </ul>
           </div>
           <div className="flex-1 flex justify-center">
-            <img src={aTeamCollabImg} alt="A Team Collaborating on an Urban Masterplan" className="rounded-xl shadow-lg w-full max-w-md object-cover" />
+            <img src="/Assets/A Team Collaborating on an Urban Masterplan.jpg" alt="A Team Collaborating on an Urban Masterplan" className="rounded-xl shadow-lg w-full max-w-md object-cover" />
           </div>
         </div>
       </section>

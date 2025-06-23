@@ -1,9 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import urbanPlanningImg from "@/Assets/urban planning.jpg";
-import urbanPlanningTeamImg from "@/Assets/urban planning (2).jpg";
-import urbanPlanningBenefitsImg from "@/Assets/urban planning (3).jpg";
-import urbanPlanningImg4 from "@/Assets/urban planning (4).jpg";
-import urbanPlanningImg5 from "@/Assets/urban planning (5).jpg";
 
 interface UrbanPlanningCarouselProps {
   heightClass?: string;
@@ -11,27 +6,27 @@ interface UrbanPlanningCarouselProps {
 
 const images = [
   {
-    src: urbanPlanningImg,
+    src: "/Assets/urban planning.jpg",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   },
   {
-    src: urbanPlanningTeamImg,
+    src: "/Assets/urban planning (2).jpg",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   },
   {
-    src: urbanPlanningBenefitsImg,
+    src: "/Assets/urban planning (3).jpg",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   },
   {
-    src: urbanPlanningImg4,
+    src: "/Assets/urban planning (4).jpg",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   },
   {
-    src: urbanPlanningImg5,
+    src: "/Assets/urban planning (5).jpg",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   }

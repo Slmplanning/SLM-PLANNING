@@ -2,51 +2,34 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import ourStoryImg from "@/Assets/Our story image.jpg";
-import sustainabilityIcon from "@/Assets/Sustainability icon.png";
-import innovationIcon from "@/Assets/innovation icon.png";
-import communityIcon from "@/Assets/community centered.png";
-import collaborativeIcon from "@/Assets/collaborative approach.png";
-import team1 from "@/Assets/Team member 1.jpg";
-import team2 from "@/Assets/Team Member 2.jpg";
-import team3 from "@/Assets/Team Member 3.jpg";
-import team4 from "@/Assets/Team Member 4.jpg";
-import facebookIcon from "@/Assets/facebook-icon.png";
-import xIcon from "@/Assets/X-icon.png";
-import linkedinIcon from "@/Assets/LinkedIn-icon.png";
-import instagramIcon from "@/Assets/instagram-icon.jpg";
-import dataDrivenIcon from "@/Assets/data_driven-icon.png";
-import operationalExcellenceIcon from "@/Assets/operational_excellence-icon.png";
-import intergratedApproachIcon from "@/Assets/Intergrated-approach icon.png";
-import purposeDrivenIcon from "@/Assets/purpose_driven-icon.png";
 
 const About = () => {
   const teamMembers = [
     {
       name: "Michael Kimani",
       title: "Principal Urban Planner",
-      image: team1,
+      image: "/Assets/Team member 1.jpg",
       description: "15+ years of experience in sustainable urban development",
       gender: "man"
     },
     {
       name: "Samuel Otieno",
       title: "Lead Landscape Architect",
-      image: team2,
+      image: "/Assets/Team Member 2.jpg",
       description: "Expert in ecological design and green infrastructure",
       gender: "woman"
     },
     {
       name: "Grace Mwende",
       title: "Senior Urban Designer",
-      image: team3,
+      image: "/Assets/Team Member 3.jpg",
       description: "Specializes in community-centered design solutions",
       gender: "man"
     },
     {
       name: "Aisha Njeri",
       title: "3D Visualization Director",
-      image: team4,
+      image: "/Assets/Team Member 4.jpg",
       description: "Award-winning expertise in architectural visualization",
       gender: "woman"
     }
@@ -56,43 +39,43 @@ const About = () => {
     {
       title: "Sustainability First",
       description: "Every project prioritizes environmental stewardship and long-term ecological health.",
-      icon: sustainabilityIcon
+      icon: "/Assets/Sustainability icon.png"
     },
     {
       title: "Purpose Driven",
       description: "Guided by a clear mission to create lasting, positive impact.",
-      icon: purposeDrivenIcon
+      icon: "/Assets/purpose_driven-icon.png"
     },
     {
       title: "Collaborative Approach",
       description: "Working closely with clients, communities, and stakeholders throughout every project.",
-      icon: collaborativeIcon
+      icon: "/Assets/collaborative approach.png"
     },
     {
       title: "Innovation-Driven",
       description: "Leveraging cutting-edge technology and methodologies to solve complex urban challenges.",
-      icon: innovationIcon
+      icon: "/Assets/innovation icon.png"
     },
     {
       title: "Data Driven Solutions",
       description: "We harness data and analytics to inform smart, impactful decisions for our clients.",
-      icon: dataDrivenIcon
+      icon: "/Assets/data_driven-icon.png"
     },
     {
       title: "Operational Excellence",
       description: "Delivering projects efficiently, effectively, and to the highest standards.",
-      icon: operationalExcellenceIcon,
+      icon: "/Assets/operational_excellence-icon.png",
       iconClass: "filter-green"
     },
     {
       title: "Intergrated Approach",
       description: "Seamlessly blending disciplines for holistic, future-ready solutions.",
-      icon: intergratedApproachIcon
+      icon: "/Assets/Intergrated-approach icon.png"
     },
     {
       title: "Community-Centered",
       description: "We design with people at the heart, creating spaces that serve diverse communities.",
-      icon: communityIcon
+      icon: "/Assets/community centered.png"
     }
   ];
 
@@ -195,7 +178,7 @@ const About = () => {
             {/* Image with overlay and quote */}
             <div className="relative w-full md:w-1/2 h-80 rounded-2xl overflow-hidden group mb-8 md:mb-0">
               <img
-                src={ourStoryImg}
+                src="/Assets/Our story image.jpg"
                 alt="Our Story"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-95"
               />
@@ -302,10 +285,10 @@ const About = () => {
                   />
                   {/* Social icons at image bottom, hidden by default, shown on hover */}
                   <div className="absolute left-0 bottom-3 w-full flex flex-row gap-3 justify-center items-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-                    <a href="#" className="inline-block" tabIndex={-1}><img src={facebookIcon} alt="Facebook" className="w-8 h-8 rounded-full bg-white p-1 shadow hover:scale-110 transition-transform duration-200" /></a>
-                    <a href="#" className="inline-block" tabIndex={-1}><img src={xIcon} alt="X" className="w-8 h-8 rounded-full bg-white p-1 shadow hover:scale-110 transition-transform duration-200" /></a>
-                    <a href="#" className="inline-block" tabIndex={-1}><img src={linkedinIcon} alt="LinkedIn" className="w-8 h-8 rounded-full bg-white p-1 shadow hover:scale-110 transition-transform duration-200" /></a>
-                    <a href="#" className="inline-block" tabIndex={-1}><img src={instagramIcon} alt="Instagram" className="w-8 h-8 rounded-full bg-white p-1 shadow hover:scale-110 transition-transform duration-200" /></a>
+                    <a href="#" className="inline-block" tabIndex={-1}><img src="/Assets/facebook-icon.png" alt="Facebook" className="w-8 h-8 rounded-full bg-white p-1 shadow hover:scale-110 transition-transform duration-200" /></a>
+                    <a href="#" className="inline-block" tabIndex={-1}><img src="/Assets/X-icon.png" alt="X" className="w-8 h-8 rounded-full bg-white p-1 shadow hover:scale-110 transition-transform duration-200" /></a>
+                    <a href="#" className="inline-block" tabIndex={-1}><img src="/Assets/LinkedIn-icon.png" alt="LinkedIn" className="w-8 h-8 rounded-full bg-white p-1 shadow hover:scale-110 transition-transform duration-200" /></a>
+                    <a href="#" className="inline-block" tabIndex={-1}><img src="/Assets/instagram-icon.jpg" alt="Instagram" className="w-8 h-8 rounded-full bg-white p-1 shadow hover:scale-110 transition-transform duration-200" /></a>
                   </div>
                   {/* White gradient overlay on image hover */}
                   <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-white/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />

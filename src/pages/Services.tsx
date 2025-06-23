@@ -4,12 +4,6 @@ import HeroCarousel from "@/components/HeroCarousel";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import urbanPlanningImg from "@/Assets/urban planning.jpg";
-import UrbanDesignImg from "@/Assets/Urban design.jpg";
-import LandscapeArchitectureImg from "@/Assets/Landscape Architecture.jpg";
-import RenderingImg from "@/Assets/3D render.jpg";
-import UrbanPlanningTeamImg from "@/Assets/urban planning (2).jpg";
-import UrbanPlanningBenefitsImg from "@/Assets/urban planning (3).jpg";
 import React, { useRef, useEffect, useState } from "react";
 
 function useInView(ref, rootMargin = "-100px") {
@@ -130,7 +124,7 @@ const Services = () => {
         "Policy Development",
         "Community Engagement"
       ],
-      image: urbanPlanningImg
+      image: "/Assets/urban planning.jpg"
     },
     {
       title: "Urban Design",
@@ -142,7 +136,7 @@ const Services = () => {
         "Accessibility Planning",
         "Wayfinding Systems"
       ],
-      image: UrbanDesignImg
+      image: "/Assets/Urban design.jpg"
     },
     {
       title: "Landscape Architecture",
@@ -154,7 +148,7 @@ const Services = () => {
         "Native Plant Design",
         "Urban Forestry"
       ],
-      image: LandscapeArchitectureImg
+      image: "/Assets/Landscape Architecture.jpg"
     },
     {
       title: "3D Rendering",
@@ -166,7 +160,7 @@ const Services = () => {
         "Design Presentations",
         "Marketing Materials"
       ],
-      image: RenderingImg
+      image: "/Assets/3D render.jpg"
     }
   ];
 

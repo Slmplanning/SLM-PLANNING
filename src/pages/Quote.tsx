@@ -9,10 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import HeroCarousel from "@/components/HeroCarousel";
-// Office icons for quote page
-import EmailIcon from "@/Assets/email.png";
-import PhoneIcon from "@/Assets/phone icone.png";
-import TimeIcon from "@/Assets/time.png";
 
 const Quote = () => {
   const [formData, setFormData] = useState({
@@ -319,19 +315,19 @@ const Quote = () => {
                   <div className="space-y-2">
                     <p className="font-inter text-sm text-gray-600 flex items-center gap-2">
                       <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                        <img src={EmailIcon} alt="Email" className="w-5 h-5" />
+                        <img src="/Assets/email.png" alt="Email" className="w-5 h-5" />
                       </span>
                       quotes@slmplanning.com
                     </p>
                     <p className="font-inter text-sm text-gray-600 flex items-center gap-2">
                       <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                        <img src={PhoneIcon} alt="Phone" className="w-5 h-5" />
+                        <img src="/Assets/phone icone.png" alt="Phone" className="w-5 h-5" />
                       </span>
                       +1 (555) 123-4567
                     </p>
                     <p className="font-inter text-sm text-gray-600 flex items-center gap-2">
                       <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                        <img src={TimeIcon} alt="Office Hours" className="w-5 h-5" />
+                        <img src="/Assets/time.png" alt="Office Hours" className="w-5 h-5" />
                       </span>
                       Monday - Friday, 9AM - 6PM EST
                     </p>

@@ -4,56 +4,46 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import React from "react";
 import UrbanDesignCarousel from "@/components/UrbanDesignCarousel";
-import PublicRealmDesignImg from "@/Assets/Public Realm-Design.jpg";
-import UrbanStreetscapesImg from "@/Assets/Urban Streetscapes.jpg";
-import MixedUseDistrictDesignImg from "@/Assets/Mixed-Use & District Design.jpg";
-import WayfindingUrbanExperienceImg from "@/Assets/Wayfinding & Urban Experience.jpg";
-import GreenInfrastructureIntegrationImg from "@/Assets/Green Infrastructure Integration.jpg";
-import TransitOrientedDevelopmentImg from "@/Assets/Transit-Oriented Development.jpg";
-import UrbanDesignGuidelinesToolkitsImg from "@/Assets/Urban Design Guidelines & Toolkits.jpg";
-import DesignResearchPrototypingImg from "@/Assets/Design Research & Prototyping.jpg";
-import UrbanDesignImg from "@/Assets/Urban design.jpg";
-import UrbanDesignBenefitsImg from "@/Assets/urban design (3).jpg";
 
 const urbanDesignServices = [
 	{
 		title: "Public Realm Design",
-		image: PublicRealmDesignImg,
+		image: "/Assets/Public Realm-Design.jpg",
 		desc: "Designing civic spaces, streetscapes, plazas, and parks that are accessible, inclusive, and visually appealing.",
 	},
 	{
 		title: "Urban Streetscapes",
-		image: UrbanStreetscapesImg,
+		image: "/Assets/Urban Streetscapes.jpg",
 		desc: "Pedestrian-first street designs that integrate green infrastructure, mobility, safety, and placemaking principles.",
 	},
 	{
 		title: "Mixed-Use & District Design",
-		image: MixedUseDistrictDesignImg,
+		image: "/Assets/Mixed-Use & District Design.jpg",
 		desc: "Master-planning for neighborhoods and town centers with integrated uses, active frontages, and strong identities.",
 	},
 	{
 		title: "Wayfinding & Urban Experience",
-		image: WayfindingUrbanExperienceImg,
+		image: "/Assets/Wayfinding & Urban Experience.jpg",
 		desc: "Crafting legible, intuitive environments through spatial logic, signage, edges, and orientation.",
 	},
 	{
 		title: "Green Infrastructure Integration",
-		image: GreenInfrastructureIntegrationImg,
+		image: "/Assets/Green Infrastructure Integration.jpg",
 		desc: "Seamless integration of nature into urban settings for stormwater, climate resilience, and biodiversity.",
 	},
 	{
 		title: "Transit-Oriented Development (TOD)",
-		image: TransitOrientedDevelopmentImg,
+		image: "/Assets/Transit-Oriented Development.jpg",
 		desc: "Design frameworks that prioritize walkability, density, and mixed-use around mobility hubs.",
 	},
 	{
 		title: "Urban Design Guidelines & Toolkits",
-		image: UrbanDesignGuidelinesToolkitsImg,
+		image: "/Assets/Urban Design Guidelines & Toolkits.jpg",
 		desc: "Creating form-based codes and visual design manuals to guide consistent and adaptive urban development.",
 	},
 	{
 		title: "Design Research & Prototyping",
-		image: DesignResearchPrototypingImg,
+		image: "/Assets/Design Research & Prototyping.jpg",
 		desc: "Using behavioral insights, public prototyping, and data to refine spaces that work for real people.",
 	},
 ];
@@ -160,7 +150,7 @@ const UrbanDesign = () => (
 				</div>
 				<div className="flex-1 order-2 md:order-2 flex justify-center items-center relative">
 					<img
-						src={UrbanDesignImg}
+						src="/Assets/Urban design.jpg"
 						alt="Urban Design"
 						className="w-full max-w-md rounded-2xl shadow-2xl urban-img-animate border-4 border-[#FCEFEF]"
 					/>
@@ -233,7 +223,7 @@ const UrbanDesign = () => (
 			<div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-0">
 				<div className="flex-1 order-1 md:order-1 flex justify-center items-center relative">
 					<img
-						src={UrbanDesignBenefitsImg}
+						src="/Assets/urban design (3).jpg"
 						alt="Urban Design Benefits"
 						className="w-full max-w-md rounded-2xl shadow-lg animate-fade-in-up"
 					/>

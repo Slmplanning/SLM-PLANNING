@@ -8,15 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import HeroCarousel from "@/components/HeroCarousel";
-// Office icons
-import AddressIcon from "@/Assets/address.png";
-import PhoneIcon from "@/Assets/phone icone.png";
-import EmailIcon from "@/Assets/email.png";
-import TimeIcon from "@/Assets/time.png";
-import FacebookIcon from "@/Assets/facebook-icon.png";
-import LinkedInIcon from "@/Assets/LinkedIn-icon.png";
-import XIcon from "@/Assets/X-icon.png";
-import InstagramIcon from "@/Assets/instagram-icon.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -215,7 +206,7 @@ const Contact = () => {
                   <div className="space-y-3">
                     <div className="flex items-start space-x-3">
                       <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                        <img src={AddressIcon} alt="Address" className="w-6 h-6" />
+                        <img src="/Assets/address.png" alt="Address" className="w-6 h-6" />
                       </span>
                       <div>
                         <p className="font-inter font-semibold text-gray-800">Address</p>
@@ -228,7 +219,7 @@ const Contact = () => {
                     </div>
                     <div className="flex items-start space-x-3">
                       <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                        <img src={PhoneIcon} alt="Phone" className="w-6 h-6 object-contain object-center" />
+                        <img src="/Assets/phone icone.png" alt="Phone" className="w-6 h-6 object-contain object-center" />
                       </span>
                       <div>
                         <p className="font-inter font-semibold text-gray-800">Phone</p>
@@ -237,7 +228,7 @@ const Contact = () => {
                     </div>
                     <div className="flex items-start space-x-3">
                       <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                        <img src={EmailIcon} alt="Email" className="w-6 h-6" />
+                        <img src="/Assets/email.png" alt="Email" className="w-6 h-6" />
                       </span>
                       <div>
                         <p className="font-inter font-semibold text-gray-800">Email</p>
@@ -246,7 +237,7 @@ const Contact = () => {
                     </div>
                     <div className="flex items-start space-x-3">
                       <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white transition-transform duration-200 hover:scale-110">
-                        <img src={TimeIcon} alt="Office Hours" className="w-6 h-6" />
+                        <img src="/Assets/time.png" alt="Office Hours" className="w-6 h-6" />
                       </span>
                       <div>
                         <p className="font-inter font-semibold text-gray-800">Office Hours</p>
@@ -294,16 +285,16 @@ const Contact = () => {
                 <CardContent>
                   <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
                     <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
-                      <img src={FacebookIcon} alt="Facebook" className="w-5 h-5" /> Facebook
+                      <img src="/Assets/facebook-icon.png" alt="Facebook" className="w-5 h-5" /> Facebook
                     </Button>
                     <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
-                      <img src={XIcon} alt="X" className="w-5 h-5" /> X
+                      <img src="/Assets/X-icon.png" alt="X" className="w-5 h-5" /> X
                     </Button>
                     <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
-                      <img src={LinkedInIcon} alt="LinkedIn" className="w-5 h-5" /> LinkedIn
+                      <img src="/Assets/LinkedIn-icon.png" alt="LinkedIn" className="w-5 h-5" /> LinkedIn
                     </Button>
                     <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
-                      <img src={InstagramIcon} alt="Instagram" className="w-5 h-5" /> Instagram
+                      <img src="/Assets/instagram-icon.jpg" alt="Instagram" className="w-5 h-5" /> Instagram
                     </Button>
                   </div>
                   <p className="font-inter text-gray-600 text-sm mt-4">

@@ -4,33 +4,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import React from "react";
 import ThreeDRenderingCarousel from "../components/ThreeDRenderingCarousel";
-// Only use images labelled 3D render
-import Render1 from "@/Assets/3D render 1.jpg";
-import Render2 from "@/Assets/3D render 2.jpg";
-import Render3 from "@/Assets/3D render 3.jpg";
-import Render4 from "@/Assets/3D render 4.jpg";
-import RenderMain from "@/Assets/3D render.jpg";
-import PhotoRealisticImg from "@/Assets/3D render 3.jpg";
-import AerialViewsImg from "@/Assets/Aerial Views & Masterplan Renderings.jpg";
-import ConceptSketchImg from "@/Assets/Concept Sketch Renders.jpg";
-import AnimationsWalkthroughsImg from "@/Assets/3D render 4.jpg";
-import InteractivePresentationsImg from "@/Assets/Interactive Design Presentations.jpg";
-import ARVRImg from "@/Assets/Augmented & Virtual Reality Ready Assets.jpg";
 
 const renderingServices = [
 	{
 		title: "Photorealistic 3D Renders",
-		image: PhotoRealisticImg,
+		image: "/Assets/3D render 3.jpg",
 		desc: "Stunning, detail-rich visualizations of buildings, landscapes, and spaces that showcase lighting, texture, and realism.",
 	},
 	{
 		title: "Aerial Views & Masterplan Renderings",
-		image: AerialViewsImg,
+		image: "/Assets/Aerial Views & Masterplan Renderings.jpg",
 		desc: "Large-scale overviews that highlight context, scale, and layout for urban plans, campuses, or mixed-use developments.",
 	},
 	{
 		title: "Concept Sketch Renders",
-		image: ConceptSketchImg,
+		image: "/Assets/Concept Sketch Renders.jpg",
 		desc: "Artistic, styled renderings that bring early design ideas to life while maintaining flexibility and creative intent.",
 	},
 	{
@@ -40,12 +28,12 @@ const renderingServices = [
 	},
 	{
 		title: "Interactive Design Presentations",
-		image: InteractivePresentationsImg,
+		image: "/Assets/Interactive Design Presentations.jpg",
 		desc: "Custom-rendered assets for slide decks, investor pitches, public exhibitions, and community engagements.",
 	},
 	{
 		title: "Augmented & Virtual Reality Ready Assets",
-		image: ARVRImg,
+		image: "/Assets/Augmented & Virtual Reality Ready Assets.jpg",
 		desc: "Future-proof renderings compatible with AR/VR platforms for immersive presentations and digital co-design sessions.",
 	},
 ];
@@ -133,7 +121,7 @@ const ThreeDRendering = () => (
 				</div>
 				<div className="flex-1 order-2 md:order-2 flex justify-center items-center relative">
 					<img
-						src={RenderMain}
+						src="/Assets/3D render.jpg"
 						alt="3D Rendering"
 						className="w-full max-w-xs sm:max-w-md rounded-2xl shadow-2xl border-4 border-[#FCEFEF] object-cover object-center"
 					/>
@@ -213,7 +201,7 @@ const ThreeDRendering = () => (
 			<div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-0 px-2 sm:px-4">
 				<div className="flex-1 order-1 md:order-1 flex justify-center items-center relative">
 					<img
-						src={AerialViewsImg}
+						src="/Assets/Aerial Views & Masterplan Renderings.jpg"
 						alt="Why Visualization Matters"
 						className="w-full max-w-xs sm:max-w-md rounded-2xl shadow-lg animate-fade-in-up object-cover object-center"
 					/>

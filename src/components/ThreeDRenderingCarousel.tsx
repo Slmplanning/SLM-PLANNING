@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Render1 from "@/Assets/3D render 1.jpg";
-import Render2 from "@/Assets/3D render 2.jpg";
-import Render3 from "@/Assets/3D render 3.jpg";
-import Render4 from "@/Assets/3D render 4.jpg";
-import RenderMain from "@/Assets/3D render.jpg";
 
-const images = [Render1, Render2, Render3, Render4, RenderMain];
+const images = [
+  "/Assets/3D render 1.jpg",
+  "/Assets/3D render 2.jpg",
+  "/Assets/3D render 3.jpg",
+  "/Assets/3D render 4.jpg",
+  "/Assets/3D render.jpg",
+];
 
 const ThreeDRenderingCarousel = () => {
   const [current, setCurrent] = useState(0);
@@ -21,7 +22,9 @@ const ThreeDRenderingCarousel = () => {
       {images.map((img, idx) => (
         <div
           key={idx}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === current ? 'opacity-100 z-20' : 'opacity-0 z-10'}`}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            idx === current ? "opacity-100 z-20" : "opacity-0 z-10"
+          }`}
         >
           <img
             src={img}
@@ -46,7 +49,9 @@ const ThreeDRenderingCarousel = () => {
         {images.map((_, idx) => (
           <span
             key={idx}
-            className={`block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${idx === current ? 'bg-white/90 scale-110' : 'bg-white/40'}`}
+            className={`block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+              idx === current ? "bg-white/90 scale-110" : "bg-white/40"
+            }`}
           />
         ))}
       </div>
