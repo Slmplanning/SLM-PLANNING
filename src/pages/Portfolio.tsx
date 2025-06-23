@@ -138,7 +138,7 @@ const Portfolio = () => {
                   key={project._id}
                   className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg overflow-hidden"
                 >
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden group">
                     <div
                       className="h-64 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
                       style={{ backgroundImage: `url(${project.mainImage?.asset?._ref ? sanityImageUrl(project.mainImage) : ''})` }}
@@ -155,6 +155,14 @@ const Portfolio = () => {
                         {project.year}
                       </Badge>
                     </div>
+                    {/* Project status badge on hover, bottom left */}
+                    {project.status && (
+                      <div className="absolute bottom-4 left-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Badge className={`rounded-full px-3 py-1 text-xs font-inter font-medium shadow ${project.status === 'completed' ? 'bg-green-700 text-white' : 'bg-yellow-500 text-white'}`}>
+                          {project.status === 'completed' ? 'Completed' : 'Ongoing'}
+                        </Badge>
+                      </div>
+                    )}
                   </div>
                   <CardHeader>
                     <CardTitle className="font-playfair text-xl text-slm-green-700">
