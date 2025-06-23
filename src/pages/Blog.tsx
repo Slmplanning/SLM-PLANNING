@@ -90,7 +90,7 @@ const Blog = () => {
                   <span>{featuredArticle.publishedAt ? new Date(featuredArticle.publishedAt).toLocaleDateString() : ''}</span>
                 </div>
                 <Button asChild className="bg-slm-green-600 hover:bg-slm-green-700 text-white font-semibold px-6 py-2 w-fit">
-                  <a href={`#`}>Read Full Article</a>
+                  <a href={`/blog/${featuredArticle.slug?.current}`}>Read Full Article</a>
                 </Button>
               </div>
             </div>
@@ -148,7 +148,7 @@ const Blog = () => {
                     <span>{article.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : ''}</span>
                   </div>
                   <Button asChild variant="ghost" className="text-slm-green-700 font-semibold px-0 py-1 w-fit">
-                    <a href={`#`}>Read More</a>
+                    <a href={`/blog/${article.slug?.current}`}>Read More</a>
                   </Button>
                 </div>
               </div>

@@ -29,6 +29,7 @@ export const postType = defineType({
       title: 'Cover Image',
       type: 'image',
       options: {hotspot: true},
+      description: 'This image will be used as the cover for the blog post.',
     }),
     defineField({
       name: 'categories',
@@ -59,9 +60,5 @@ export const postType = defineType({
   ],
   preview: {
     select: {title: 'title', author: 'author.name', media: 'mainImage'},
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
   },
 })
