@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HeroCarousel from "@/components/HeroCarousel";
+import TrustedCarousel from "@/components/TrustedCarousel";
 import integratedUrbanSolutionsImg from "@/Assets/intergrated urban solutions.jpg";
 import contextualLandscapeDesignImg from "@/Assets/contextual landscape design.jpg";
 import storytellingImg from "@/Assets/3D storytelling.jpg";
@@ -119,48 +120,30 @@ const Index = () => {
             </Button>
             <Button 
               asChild 
-              variant="outline" 
               size="lg" 
-              className="border-2 border-white text-white hover:bg-white hover:text-slm-green-600 font-semibold px-8 py-3"
+              variant="outline" 
+              className="border-slm-green-600 text-slm-green-700 font-semibold px-8 py-3"
             >
-              <Link to="/portfolio">View Our Portfolio</Link>
+              <Link to="/portfolio">View Portfolio</Link>
             </Button>
           </div>
         </div>
-        {/* Animated Scroll Indicator */}
-        <div
-          className="absolute left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center"
-          style={{ bottom: '36px' }}
-          aria-label="Scroll down"
-        >
-          <div
-            className="scroll-mouse group w-8 h-14 md:w-9 md:h-16 border-2 border-white rounded-full flex items-start justify-center relative transition-transform duration-200 hover:scale-110"
-            tabIndex={0}
-            role="img"
-            aria-label="Scroll down"
-          >
-            <span
-              className="block bg-white rounded-full absolute left-1/2 -translate-x-1/2"
-              style={{ width: '6px', height: '12px', top: '8px', animation: 'scroll-dot 1.4s cubic-bezier(0.45,0,0.55,1) infinite' }}
-            />
+      </section>
+
+      {/* Trusted by Leading Organizations Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-slm-green-700 mb-2">Trusted by Leading Organizations</h2>
+          <p className="font-inter text-lg text-gray-700 mb-8">We're proud to partner with forward-thinking organizations worldwide.</p>
+          <TrustedCarousel />
+          <div className="flex flex-wrap justify-center gap-6 mt-8">
+            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">Global NGO Alliance</span>
+            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">Metropolitan Planning Board</span>
+            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">EcoVision Corporation</span>
+            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">Urban Futures Initiative</span>
+            <span className="font-inter text-base text-gray-700 bg-gray-100 rounded-full px-6 py-2">Green Development Partners</span>
           </div>
         </div>
-        <style>{`
-          @keyframes scroll-dot {
-            0% { transform: translate(-50%, 0); opacity: 1; }
-            40% { opacity: 1; }
-            60% { transform: translate(-50%, 18px); opacity: 0.7; }
-            100% { transform: translate(-50%, 0); opacity: 1; }
-          }
-          .scroll-mouse {
-            background: rgba(255,255,255,0.04);
-            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
-            outline: none;
-          }
-          .scroll-mouse:focus {
-            box-shadow: 0 0 0 3px #fff6, 0 2px 8px 0 rgba(0,0,0,0.08);
-          }
-        `}</style>
       </section>
 
       {/* Introduction Section */}
@@ -226,32 +209,6 @@ const Index = () => {
           </div>
           <div className="flex-1 flex justify-center">
             <img src={aTeamCollabImg} alt="A Team Collaborating on an Urban Masterplan" className="rounded-xl shadow-lg w-full max-w-md object-cover" />
-          </div>
-        </div>
-      </section>
-
-      {/* Client Testimonials */}
-      <section className="py-20 bg-slm-green-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-slm-green-800 mb-4">
-              Trusted by Leading Organizations
-            </h2>
-            <p className="font-inter text-lg text-gray-600">
-              We're proud to partner with forward-thinking organizations worldwide.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {clients.map((client, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center text-center"
-              >
-                <span className="font-inter font-semibold text-slm-green-700 text-sm">
-                  {client}
-                </span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
