@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import landscape1 from "@/Assets/Landscape Architecture.jpg";
-import landscape2 from "@/Assets/Landscape Architecture (1).jpg";
-import landscape3 from "@/Assets/Landscape Architecture (2).jpg";
 
-const landscapeImages = [landscape1, landscape2, landscape3];
+const landscapeImages = [
+  "/Assets/Landscape Architecture.jpg",
+  "/Assets/Landscape Architecture (1).jpg",
+  "/Assets/Landscape Architecture (2).jpg",
+];
 
 interface HeroCarouselProps {
   heightClass?: string;
@@ -48,11 +49,15 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ heightClass = "h-96" }) => 
         />
       ))}
       {/* Dark translucent overlay for text visibility */}
-      <div className="absolute inset-0 w-full h-full" style={{
-        background: "linear-gradient(120deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%)",
-        zIndex: 10,
-        pointerEvents: "none"
-      }} />
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          background:
+            "linear-gradient(120deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%)",
+          zIndex: 10,
+          pointerEvents: "none",
+        }}
+      />
       <style>{`
         @keyframes zoom {
           0% { transform: scale(1); }
