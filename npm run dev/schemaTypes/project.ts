@@ -66,6 +66,21 @@ export const projectType = defineType({
       description: 'City, region, or country where the project is located',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'status',
+      title: 'Project Status',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Completed', value: 'completed' },
+          { title: 'Ongoing', value: 'ongoing' }
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'completed',
+      description: 'Mark if the project is completed or ongoing.',
+      validation: (rule) => rule.required(),
+    }),
   ],
   preview: {
     select: {

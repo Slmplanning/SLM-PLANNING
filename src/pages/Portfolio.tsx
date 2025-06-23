@@ -26,10 +26,11 @@ const Portfolio = () => {
         _id,
         title,
         description,
-        "category": categories[0]->title,
+        categories[]-> { title },
         mainImage,
         year,
         tags,
+        location,
       }`;
       try {
         const data = await sanityClient.fetch(query);
@@ -47,7 +48,10 @@ const Portfolio = () => {
 
   const filteredProjects = filter === "All"
     ? projects
-    : projects.filter((project) => project.category === filter);
+    : projects.filter((project) =>
+        Array.isArray(project.categories) &&
+        project.categories.some((cat: any) => cat?.title === filter)
+      );
 
   return (
     <div className="min-h-screen bg-white">
@@ -139,10 +143,12 @@ const Portfolio = () => {
                       className="h-64 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
                       style={{ backgroundImage: `url(${project.mainImage?.asset?._ref ? sanityImageUrl(project.mainImage) : ''})` }}
                     />
-                    <div className="absolute top-4 left-4">
-                      <Badge className="bg-slm-green-600 text-white">
-                        {project.category}
-                      </Badge>
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
+                      {project.categories?.map((cat: any, idx: number) => (
+                        <Badge key={idx} className="bg-slm-green-600 text-white rounded-full px-3 py-1 text-xs font-inter font-medium shadow">
+                          {cat?.title}
+                        </Badge>
+                      ))}
                     </div>
                     <div className="absolute top-4 right-4">
                       <Badge variant="secondary" className="bg-white/90 text-slm-green-700">
@@ -163,19 +169,24 @@ const Portfolio = () => {
                     )}
                   </CardHeader>
                   <CardContent>
-                    <p className="font-inter text-gray-600 mb-4 leading-relaxed">
+                    <p className="font-inter text-gray-600 mb-2 leading-relaxed">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags?.map((tag: string, tagIndex: number) => (
-                        <Badge
-                          key={tagIndex}
-                          variant="outline"
-                          className="text-xs border-slm-green-300 text-slm-green-600"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
+                    {/* Tags below description, split by comma if needed */}
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {(Array.isArray(project.tags)
+                        ? project.tags.flatMap((tag: string) => tag.split(',').map(t => t.trim()).filter(Boolean))
+                        : typeof project.tags === 'string'
+                          ? project.tags.split(',').map((t: string) => t.trim()).filter(Boolean)
+                          : [])
+                        .map((tag: string, tagIndex: number) => (
+                          <span
+                            key={tagIndex}
+                            className="inline-block bg-slm-green-50 text-slm-green-700 border border-slm-green-200 rounded-full px-3 py-1 text-xs font-inter font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                     </div>
                   </CardContent>
                 </Card>
