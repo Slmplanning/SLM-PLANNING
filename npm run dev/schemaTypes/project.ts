@@ -12,7 +12,7 @@ export const projectType = defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
-    defineField({
+    defineField({ 
       name: 'slug',
       title: 'Slug',
       type: 'slug',

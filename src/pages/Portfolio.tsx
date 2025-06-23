@@ -191,18 +191,12 @@ const Portfolio = () => {
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-slm-green-800 mb-12">
             Our Impact by the Numbers
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-4">
               <div className="w-20 h-20 bg-slm-green-600 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-white text-2xl font-bold">200+</span>
+                <AnimatedCounter to={50} suffix="+" className="text-white text-2xl font-bold" />
               </div>
               <h3 className="font-playfair text-xl font-semibold text-slm-green-700">Projects Completed</h3>
-            </div>
-            <div className="space-y-4">
-              <div className="w-20 h-20 bg-slm-brown-600 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-white text-2xl font-bold">50M+</span>
-              </div>
-              <h3 className="font-playfair text-xl font-semibold text-slm-green-700">Sq Ft Planned</h3>
             </div>
             <div className="space-y-4">
               <div className="w-20 h-20 bg-slm-green-600 rounded-full flex items-center justify-center mx-auto">
@@ -234,4 +228,27 @@ function sanityImageUrl(image: any) {
   const ref = image.asset._ref;
   const [, id, dimension, format] = ref.split('-');
   return `https://cdn.sanity.io/images/3qxalk7v/production/${id}-${dimension}.${format}`;
+}
+
+// AnimatedCounter component
+import { useRef } from "react";
+function AnimatedCounter({ to, suffix = '', className = '' }: { to: number, suffix?: string, className?: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<NodeJS.Timeout | null>(null);
+  useEffect(() => {
+    let start = 0;
+    const end = to;
+    const duration = 1200;
+    const stepTime = Math.max(Math.floor(duration / end), 20);
+    function run() {
+      start += 1;
+      setCount(start);
+      if (start < end) {
+        ref.current = setTimeout(run, stepTime);
+      }
+    }
+    run();
+    return () => ref.current && clearTimeout(ref.current);
+  }, [to]);
+  return <span className={className}>{count}{suffix}</span>;
 }
