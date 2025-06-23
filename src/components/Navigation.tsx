@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import slmLogo from "@/Assets/slm-logo.png";
+// Use relative import for logo to fix Jest static asset mocking
+import slmLogo from "../Assets/slm-logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);

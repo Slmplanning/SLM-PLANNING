@@ -292,7 +292,7 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex space-x-4">
+                  <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
                     <Button variant="outline" size="sm" className="border-slm-green-300 text-slm-green-600 hover:bg-slm-green-50 flex items-center gap-2">
                       <img src={FacebookIcon} alt="Facebook" className="w-5 h-5" /> Facebook
                     </Button>
