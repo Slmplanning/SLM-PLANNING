@@ -2,7 +2,7 @@
 import {StructureBuilder} from 'sanity/structure'
 import {MdArticle, MdWork} from 'react-icons/md'
 
-export default (S) =>
+const deskStructure = (S: StructureBuilder) =>
   S.list()
     .title('Content')
     .items([
@@ -24,6 +24,11 @@ export default (S) =>
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (item) => !['post', 'project'].includes(item.getId())
+        (item) => {
+          const id = item.getId();
+          return id && !['post', 'project'].includes(id);
+        }
       ),
     ])
+
+export default deskStructure;
