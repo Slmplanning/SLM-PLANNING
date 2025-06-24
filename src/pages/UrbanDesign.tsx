@@ -53,12 +53,21 @@ const UrbanDesign = () => (
 		<Navigation />
 		{/* Hero Carousel Section */}
 		<section className="relative h-[38rem] flex items-center justify-center overflow-hidden pt-20 md:pt-0 px-2 sm:px-4">
-			{/* Gradient overlay for text readability */}
+			{/* Headline and Description Text (centered, above carousel) */}
+			<div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
+				<h1 className="font-playfair text-4xl md:text-6xl font-bold text-white text-center drop-shadow-lg mb-4">
+					Urban Design
+				</h1>
+				<p className="font-inter text-xl md:text-2xl text-white text-center drop-shadow-md max-w-2xl">
+					Crafting Human-Centered Urban Spaces That Inspire, Connect, and Thrive.
+				</p>
+			</div>
+			{/* Home page style overlay for readability */}
 			<div
 				className="absolute inset-0 z-10 pointer-events-none"
 				style={{
 					background:
-						"linear-gradient(180deg, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.25) 100%)",
+						"linear-gradient(180deg, rgba(30, 41, 59, 0.55) 0%, rgba(30, 41, 59, 0.35) 60%, rgba(30, 41, 59, 0.15) 100%)",
 				}}
 			/>
 			{/* Hero Carousel Section */}
@@ -111,15 +120,6 @@ const UrbanDesign = () => (
           100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
       `}</style>
-			{/* Hero Text Overlay */}
-			<div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
-				<h1 className="font-playfair text-4xl md:text-6xl font-bold text-white text-center drop-shadow-lg mb-4">
-					Urban Design
-				</h1>
-				<p className="font-inter text-xl md:text-2xl text-white text-center drop-shadow-md max-w-2xl">
-					Crafting Human-Centered Urban Spaces That Inspire, Connect, and Thrive.
-				</p>
-			</div>
 		</section>
 		{/* Section 1: Design Philosophy */}
 		<section className="py-20 bg-white">

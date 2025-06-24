@@ -49,15 +49,6 @@ const LandscapeArchitectureCarousel = () => {
           />
         ))}
       </div>
-      {/* CRO Description: Why Visualization Matters */}
-      <div className="w-full flex justify-center items-center mt-8 px-4 md:px-0">
-        <div className="bg-white/90 rounded-xl shadow-lg p-4 md:p-6 max-w-2xl w-full text-center">
-          <h3 className="font-playfair text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-2">Why Visualization Matters</h3>
-          <p className="font-inter text-sm sm:text-base md:text-lg text-gray-700">
-            Visualization bridges the gap between concept and reality, helping clients and stakeholders clearly understand design intent. High-quality visuals inspire confidence, accelerate decision-making, and drive engagement—ensuring your vision is communicated with maximum impact across all devices.
-          </p>
-        </div>
-      </div>
     </div>
   );
 };

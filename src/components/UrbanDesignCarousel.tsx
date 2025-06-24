@@ -30,15 +30,6 @@ const UrbanDesignCarousel = ({ heightClass = "h-[38rem]" }) => {
           style={{ borderRadius: "0 0 2.5rem 2.5rem" }}
         />
       ))}
-      {/* Responsive text overlay */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 text-center w-full px-2 sm:px-4 pointer-events-none">
-        <h2 className="font-playfair text-2xl sm:text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-2 animate-fade-in-up">
-          Urban Design
-        </h2>
-        <p className="font-inter text-base sm:text-lg md:text-xl text-white drop-shadow-md max-w-2xl mx-auto animate-fade-in-up delay-150">
-          Crafting Human-Centered Urban Spaces That Inspire, Connect, and Thrive.
-        </p>
-      </div>
       {/* Carousel dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {images.map((_, idx) => (
