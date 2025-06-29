@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface UrbanPlanningCarouselProps {
   heightClass?: string;
@@ -6,27 +6,27 @@ interface UrbanPlanningCarouselProps {
 
 const images = [
   {
-    src: "/Assets/urban planning.jpg",
+    src: "/Assets/urban planning.webp",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   },
   {
-    src: "/Assets/urban planning (2).jpg",
+    src: "/Assets/urban planning (2).webp",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   },
   {
-    src: "/Assets/urban planning (3).jpg",
+    src: "/Assets/urban planning (3).webp",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   },
   {
-    src: "/Assets/urban planning (4).jpg",
+    src: "/Assets/urban planning (4).webp",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   },
   {
-    src: "/Assets/urban planning (5).jpg",
+    src: "/Assets/urban planning (5).webp",
     title: "Urban Planning",
     desc: "Strategic planning solutions that shape sustainable, livable communities for current and future generations."
   }
@@ -34,51 +34,74 @@ const images = [
 
 const UrbanPlanningCarousel: React.FC<UrbanPlanningCarouselProps> = ({ heightClass = "h-[38rem]" }) => {
   const [current, setCurrent] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
+  // Preload images
   useEffect(() => {
-    setLoaded(false);
-    timeoutRef.current = setTimeout(() => {
-      setLoaded(true);
-    }, 100);
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    const preloadImages = async () => {
+      const imagePromises = images.map((img) => {
+        return new Promise((resolve) => {
+          const image = new Image();
+          image.onload = () => resolve(img.src);
+          image.onerror = () => resolve(img.src);
+          image.src = img.src;
+        });
+      });
+
+      await Promise.all(imagePromises);
+      setImagesLoaded(true);
     };
-  }, [current]);
+
+    preloadImages();
+  }, []);
 
   useEffect(() => {
+    if (!imagesLoaded) return;
+    
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 5000);
+    }, 3500); // Faster transitions
     return () => clearInterval(interval);
-  }, []);
+  }, [imagesLoaded, images.length]);
+
+  if (!imagesLoaded) {
+    return (
+      <div className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0 bg-gradient-to-br from-slm-green-50 to-slm-green-100`}>
+        <div className="animate-pulse">
+          <div className="w-16 h-16 border-4 border-slm-green-300 border-t-slm-green-600 rounded-full animate-spin"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0`}>
       {images.map((img, idx) => (
-        <div
+        <img
           key={idx}
-          className={`absolute w-full h-full top-0 left-0 transition-opacity duration-1000 ${idx === current && loaded ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-          style={{ borderRadius: "0 0 2.5rem 2.5rem" }}
-        >
-          <img
-            src={img.src}
-            alt={img.title}
-            className="w-full h-full object-cover"
-            style={{ borderRadius: "0 0 2.5rem 2.5rem" }}
-          />
-          {/* Gradient overlay for text readability, not a solid black */}
-          <div className="absolute inset-0" style={{background: "linear-gradient(180deg, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.25) 100%)", borderRadius: "0 0 2.5rem 2.5rem"}} />
-          {/* Only keep the main prominent overlay text, remove any duplicate text overlays at the bottom */}
-        </div>
+          src={img.src}
+          alt={img.title}
+          className={`absolute w-full h-full object-cover transition-all duration-300 ease-in-out ${
+            idx === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
+          }`}
+          style={{ 
+            borderRadius: "0 0 2.5rem 2.5rem",
+            willChange: "opacity, transform"
+          }}
+          loading={idx === 0 ? "eager" : "lazy"}
+        />
       ))}
       {/* Carousel dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {images.map((_, idx) => (
-          <span
+          <button
             key={idx}
-            className={`block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${idx === current ? "bg-white" : "bg-white/40"} transition-all duration-300`}
+            onClick={() => setCurrent(idx)}
+            className={`block w-3 h-3 rounded-full transition-all duration-300 ${
+              idx === current 
+                ? "bg-white shadow-lg scale-110" 
+                : "bg-white/40 hover:bg-white/60"
+            }`}
           />
         ))}
       </div>

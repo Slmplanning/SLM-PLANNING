@@ -1,20 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const images = [
-  "/Assets/Urban design.jpg",
-  "/Assets/Urban design (1).jpg",
-  "/Assets/Urban design (2).jpg",
-  "/Assets/urban design (3).jpg",
+  "/Assets/Urban design.webp",
+  "/Assets/Urban design (1).webp",
+  "/Assets/Urban design (2).webp",
+  "/Assets/urban design (3).webp",
 ];
 
 const UrbanDesignCarousel = ({ heightClass = "h-[38rem]" }) => {
-  const [current, setCurrent] = React.useState(0);
-  React.useEffect(() => {
+  const [current, setCurrent] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Preload images
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = images.map((src) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(src);
+          img.onerror = () => resolve(src);
+          img.src = src;
+        });
+      });
+
+      await Promise.all(imagePromises);
+      setImagesLoaded(true);
+    };
+
+    preloadImages();
+  }, []);
+
+  useEffect(() => {
+    if (!imagesLoaded) return;
+    
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 4000);
+    }, 3500); // Faster transitions
     return () => clearInterval(interval);
-  }, []);
+  }, [imagesLoaded, images.length]);
+
+  if (!imagesLoaded) {
+    return (
+      <div className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0 bg-gradient-to-br from-slm-green-50 to-slm-green-100`}>
+        <div className="animate-pulse">
+          <div className="w-16 h-16 border-4 border-slm-green-300 border-t-slm-green-600 rounded-full animate-spin"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0`}
@@ -24,20 +58,27 @@ const UrbanDesignCarousel = ({ heightClass = "h-[38rem]" }) => {
           key={idx}
           src={img}
           alt={`Urban Design ${idx + 1}`}
-          className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${
-            idx === current ? "opacity-100 z-10" : "opacity-0 z-0"
+          className={`absolute w-full h-full object-cover transition-all duration-300 ease-in-out ${
+            idx === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
           }`}
-          style={{ borderRadius: "0 0 2.5rem 2.5rem" }}
+          style={{ 
+            borderRadius: "0 0 2.5rem 2.5rem",
+            willChange: "opacity, transform"
+          }}
+          loading={idx === 0 ? "eager" : "lazy"}
         />
       ))}
       {/* Carousel dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {images.map((_, idx) => (
-          <span
+          <button
             key={idx}
-            className={`block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
-              idx === current ? "bg-white" : "bg-white/40"
-            } transition-all duration-300`}
+            onClick={() => setCurrent(idx)}
+            className={`block w-3 h-3 rounded-full transition-all duration-300 ${
+              idx === current 
+                ? "bg-white shadow-lg scale-110" 
+                : "bg-white/40 hover:bg-white/60"
+            }`}
           />
         ))}
       </div>

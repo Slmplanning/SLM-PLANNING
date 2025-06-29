@@ -1,73 +1,91 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const landscapeImages = [
-  "/Assets/Landscape Architecture.jpg",
-  "/Assets/Landscape Architecture (1).jpg",
-  "/Assets/Landscape Architecture (2).jpg",
+const images = [
+  "/Assets/Landscape Architecture.webp",
+  "/Assets/Landscape Architecture (1).webp",
+  "/Assets/Landscape Architecture (2).webp",
 ];
 
-interface HeroCarouselProps {
-  heightClass?: string;
-}
-
-const HeroCarousel: React.FC<HeroCarouselProps> = ({ heightClass = "h-96" }) => {
+const HeroCarousel = ({ heightClass = "h-[38rem]" }) => {
   const [current, setCurrent] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loadedImages, setLoadedImages] = useState(new Set());
 
+  // Preload images
   useEffect(() => {
-    setLoaded(false);
-    timeoutRef.current = setTimeout(() => {
-      setLoaded(true);
-    }, 100);
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    const preloadImages = async () => {
+      const imagePromises = images.map((src) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            setLoadedImages(prev => new Set([...prev, src]));
+            resolve(src);
+          };
+          img.onerror = () => resolve(src);
+          img.src = src;
+        });
+      });
+
+      await Promise.all(imagePromises);
+      setImagesLoaded(true);
     };
-  }, [current]);
+
+    preloadImages();
+  }, []);
 
   useEffect(() => {
+    if (!imagesLoaded) return;
+    
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % landscapeImages.length);
-    }, 5000);
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 4000); // Reduced from 5000ms to 4000ms for faster transitions
     return () => clearInterval(interval);
-  }, []);
+  }, [imagesLoaded, images.length]);
+
+  if (!imagesLoaded) {
+    return (
+      <div className={`absolute inset-0 w-full ${heightClass} overflow-hidden bg-gradient-to-br from-slm-green-50 to-slm-green-100 flex items-center justify-center`}>
+        <div className="animate-pulse">
+          <div className="w-16 h-16 border-4 border-slm-green-300 border-t-slm-green-600 rounded-full animate-spin"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`absolute inset-0 w-full ${heightClass} overflow-hidden`}>
-      {landscapeImages.map((src, idx) => (
+      {images.map((src, idx) => (
         <img
           key={idx}
           src={src}
-          alt="Landscape"
-          className={`transition-opacity duration-700 ease-in-out w-full h-full object-cover absolute top-0 left-0 
-            ${idx === current && loaded ? "opacity-100 scale-105 animate-zoom" : "opacity-0 scale-100"}
-          `}
-          style={{
-            zIndex: idx === current ? 2 : 1,
-            transition: "opacity 0.7s, transform 5s cubic-bezier(0.4,0,0.2,1)",
+          alt={`Landscape Architecture ${idx + 1}`}
+          className={`absolute w-full h-full object-cover transition-all duration-500 ease-in-out ${
+            idx === current 
+              ? "opacity-100 scale-100 z-10" 
+              : "opacity-0 scale-105 z-0"
+          }`}
+          style={{ 
+            borderRadius: "0 0 2.5rem 2.5rem",
+            willChange: "opacity, transform"
           }}
+          loading={idx === 0 ? "eager" : "lazy"}
         />
       ))}
-      {/* Dark translucent overlay for text visibility */}
-      <div
-        className="absolute inset-0 w-full h-full"
-        style={{
-          background:
-            "linear-gradient(120deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.55) 100%)",
-          zIndex: 10,
-          pointerEvents: "none",
-        }}
-      />
-      <style>{`
-        @keyframes zoom {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.08); }
-          100% { transform: scale(1); }
-        }
-        .animate-zoom {
-          animation: zoom 5s ease-in-out;
-        }
-      `}</style>
+      
+      {/* Carousel dots */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={`block w-3 h-3 rounded-full transition-all duration-300 ${
+              idx === current 
+                ? "bg-white shadow-lg scale-110" 
+                : "bg-white/40 hover:bg-white/60"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 };

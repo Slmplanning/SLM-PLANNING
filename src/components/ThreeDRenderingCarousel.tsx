@@ -1,56 +1,84 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const images = [
-  "/Assets/3D render 1.jpg",
-  "/Assets/3D render 2.jpg",
-  "/Assets/3D render 3.jpg",
-  "/Assets/3D render 4.jpg",
-  "/Assets/3D render.jpg",
+  "/Assets/3D render 1.webp",
+  "/Assets/3D render 2.webp",
+  "/Assets/3D render 3.webp",
+  "/Assets/3D render 4.webp",
+  "/Assets/3D render.webp",
 ];
 
-const ThreeDRenderingCarousel = () => {
+const ThreeDRenderingCarousel = ({ heightClass = "h-[38rem]" }) => {
   const [current, setCurrent] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  // Preload images
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 5200);
-    return () => clearInterval(interval);
+    const preloadImages = async () => {
+      const imagePromises = images.map((src) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(src);
+          img.onerror = () => resolve(src);
+          img.src = src;
+        });
+      });
+
+      await Promise.all(imagePromises);
+      setImagesLoaded(true);
+    };
+
+    preloadImages();
   }, []);
 
-  return (
-    <div className="relative w-full h-full select-none pt-20 md:pt-0">
-      {images.map((img, idx) => (
-        <div
-          key={idx}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            idx === current ? "opacity-100 z-20" : "opacity-0 z-10"
-          }`}
-        >
-          <img
-            src={img}
-            alt="3D Rendering"
-            className="w-full h-full object-cover object-center transition-transform duration-1000 scale-105"
-            draggable={false}
-          />
-          <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-center w-full px-2 sm:px-4 pointer-events-none">
-            <h2 className="font-playfair text-2xl sm:text-3xl md:text-5xl font-bold text-[#fff] mb-2 animate-fade-in-up">
-              3D Rendering & Visualization
-            </h2>
-            <p className="font-inter text-base sm:text-lg md:text-xl text-[#fff] max-w-2xl mx-auto animate-fade-in-up delay-150">
-              Bringing Ideas to Life with Precision, Emotion, and Clarity
-            </p>
-          </div>
-          {/* Overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent z-10" />
+  useEffect(() => {
+    if (!imagesLoaded) return;
+    
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 3500); // Faster transitions
+    return () => clearInterval(interval);
+  }, [imagesLoaded, images.length]);
+
+  if (!imagesLoaded) {
+    return (
+      <div className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0 bg-gradient-to-br from-slm-green-50 to-slm-green-100`}>
+        <div className="animate-pulse">
+          <div className="w-16 h-16 border-4 border-slm-green-300 border-t-slm-green-600 rounded-full animate-spin"></div>
         </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0`}
+    >
+      {images.map((img, idx) => (
+        <img
+          key={idx}
+          src={img}
+          alt={`3D Rendering ${idx + 1}`}
+          className={`absolute w-full h-full object-cover transition-all duration-300 ease-in-out ${
+            idx === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
+          }`}
+          style={{ 
+            borderRadius: "0 0 2.5rem 2.5rem",
+            willChange: "opacity, transform"
+          }}
+          loading={idx === 0 ? "eager" : "lazy"}
+        />
       ))}
-      {/* Carousel indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+      {/* Carousel dots */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {images.map((_, idx) => (
-          <span
+          <button
             key={idx}
-            className={`block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-              idx === current ? "bg-white/90 scale-110" : "bg-white/40"
+            onClick={() => setCurrent(idx)}
+            className={`block w-3 h-3 rounded-full transition-all duration-300 ${
+              idx === current 
+                ? "bg-white shadow-lg scale-110" 
+                : "bg-white/40 hover:bg-white/60"
             }`}
           />
         ))}

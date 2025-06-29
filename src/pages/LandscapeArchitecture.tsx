@@ -8,27 +8,27 @@ import LandscapeArchitectureCarousel from "@/components/LandscapeArchitectureCar
 const landscapeServices = [
 	{
 		title: "Park & Open Space Design",
-		image: "/Assets/Park & Open Space Design.jpg",
+		image: "/Assets/Park & Open Space Design.webp",
 		desc: "Designing inclusive public parks, urban plazas, and recreational green spaces that enhance livability and wellbeing.",
 	},
 	{
 		title: "Ecological Restoration",
-		image: "/Assets/Ecological Restoration.jpg",
+		image: "/Assets/Ecological Restoration.webp",
 		desc: "Rehabilitating degraded landscapes by reintroducing native ecosystems and improving natural hydrology and habitat function.",
 	},
 	{
 		title: "Green Infrastructure Design",
-		image: "/Assets/Green Infrastructure Design.jpg",
+		image: "/Assets/Green Infrastructure Design.webp",
 		desc: "Implementing nature-based solutions like bioswales, green roofs, and permeable surfaces to manage stormwater and reduce urban heat.",
 	},
 	{
 		title: "Native Plant Design",
-		image: "/Assets/Native Plant Design.jpg",
+		image: "/Assets/Native Plant Design.webp",
 		desc: "Using indigenous plant palettes to support local ecology, reduce maintenance costs, and enhance visual identity.",
 	},
 	{
 		title: "Corporate & Commercial Landscaping",
-		image: "/Assets/Corporate & Commercial Landscaping.jpg",
+		image: "/Assets/Corporate & Commercial Landscaping.webp",
 		desc: "Designing branded, functional outdoor spaces for offices, retail centers, institutions, and mixed-use developments.",
 	},
 	{
@@ -125,7 +125,7 @@ const LandscapeArchitecture = () => (
 				</div>
 				<div className="flex-1 order-2 md:order-2 flex justify-center items-center relative">
 					<img
-						src="/Assets/Landscape Architecture (1).jpg"
+						src="/Assets/Landscape Architecture (1).webp"
 						alt="Nature-Led Design for Impactful Outdoor Environments"
 						className="w-full max-w-xs sm:max-w-md rounded-2xl shadow-2xl border-4 border-[#FCEFEF] object-cover object-center"
 					/>
@@ -197,7 +197,7 @@ const LandscapeArchitecture = () => (
 			<div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 mb-0">
 				<div className="flex-1 order-1 md:order-1 flex justify-center items-center relative">
 					<img
-						src="/Assets/Green Infrastructure Design.jpg"
+						src="/Assets/Green Infrastructure Design.webp"
 						alt="Landscape Benefits"
 						className="w-full max-w-md rounded-2xl shadow-lg animate-fade-in-up"
 					/>
@@ -227,7 +227,7 @@ const LandscapeArchitecture = () => (
 					Ready to Create Lasting Landscapes?
 				</h3>
 				<p className="font-inter text-xl text-slm-green-100 mb-8">
-					Let’s design outdoor spaces that inspire, protect, and serve your
+					Let's design outdoor spaces that inspire, protect, and serve your
 					community.
 				</p>
 				<div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
