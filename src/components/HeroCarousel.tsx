@@ -53,7 +53,7 @@ const HeroCarousel = ({ heightClass = "h-[38rem]" }) => {
   }
 
   return (
-    <div className={`absolute inset-0 w-full ${heightClass} overflow-hidden`}>
+    <div className={`fixed inset-0 w-screen h-screen overflow-hidden`}>
       {images.map((src, idx) => (
         <img
           key={idx}
@@ -64,10 +64,7 @@ const HeroCarousel = ({ heightClass = "h-[38rem]" }) => {
               ? "opacity-100 scale-100 z-10" 
               : "opacity-0 scale-105 z-0"
           }`}
-          style={{ 
-            borderRadius: "0 0 2.5rem 2.5rem",
-            willChange: "opacity, transform"
-          }}
+          style={{ willChange: "opacity, transform" }}
           loading={idx === 0 ? "eager" : "lazy"}
         />
       ))}

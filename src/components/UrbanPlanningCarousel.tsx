@@ -66,7 +66,7 @@ const UrbanPlanningCarousel: React.FC<UrbanPlanningCarouselProps> = ({ heightCla
 
   if (!imagesLoaded) {
     return (
-      <div className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0 bg-gradient-to-br from-slm-green-50 to-slm-green-100`}>
+      <div className={`fixed inset-0 w-screen h-screen flex items-center justify-center bg-gradient-to-br from-slm-green-50 to-slm-green-100`}>
         <div className="animate-pulse">
           <div className="w-16 h-16 border-4 border-slm-green-300 border-t-slm-green-600 rounded-full animate-spin"></div>
         </div>
@@ -75,7 +75,7 @@ const UrbanPlanningCarousel: React.FC<UrbanPlanningCarouselProps> = ({ heightCla
   }
 
   return (
-    <div className={`relative w-full ${heightClass} flex items-center justify-center pt-20 md:pt-0`}>
+    <div className={`fixed inset-0 w-screen h-screen flex items-center justify-center`}>
       {images.map((img, idx) => (
         <img
           key={idx}
@@ -84,10 +84,7 @@ const UrbanPlanningCarousel: React.FC<UrbanPlanningCarouselProps> = ({ heightCla
           className={`absolute w-full h-full object-cover transition-all duration-300 ease-in-out ${
             idx === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
           }`}
-          style={{ 
-            borderRadius: "0 0 2.5rem 2.5rem",
-            willChange: "opacity, transform"
-          }}
+          style={{ willChange: "opacity, transform" }}
           loading={idx === 0 ? "eager" : "lazy"}
         />
       ))}

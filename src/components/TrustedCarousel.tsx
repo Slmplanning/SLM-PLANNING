@@ -10,18 +10,18 @@ const trustedImages = [
 
 const TrustedCarousel = () => {
   return (
-    <div className="w-full py-8 bg-white">
-      <div className="overflow-hidden relative">
-        <div className="flex animate-scroll-x whitespace-nowrap items-center gap-8 md:gap-16">
+    <div className="w-screen h-40 bg-white">
+      <div className="overflow-hidden relative w-screen h-40">
+        <div className="flex animate-scroll-x whitespace-nowrap items-center h-full w-full">
           {trustedImages.map((img, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 flex items-center justify-center h-20 md:h-28 px-6"
+              className="flex-shrink-0 flex items-center justify-center h-full w-40"
             >
               <img
                 src={img}
                 alt="Trusted Organization Logo"
-                className="h-12 md:h-20 w-auto object-contain transition duration-300"
+                className="h-full w-auto object-contain transition duration-300 m-0 p-0 border-none rounded-none"
                 loading="lazy"
               />
             </div>
