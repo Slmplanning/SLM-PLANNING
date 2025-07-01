@@ -53,9 +53,14 @@ const UrbanPlanning = () => (
 		<Navigation />
 		{/* Hero Carousel Section */}
 		<section className="relative h-[38rem] flex items-center justify-center overflow-hidden pt-20 md:pt-0 px-2 sm:px-4">
-			{/* Gradient overlay for text readability */}
-			<div className="absolute inset-0 z-10 pointer-events-none" style={{background: "linear-gradient(180deg, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.25) 100%)"}} />
-			<UrbanPlanningCarousel heightClass="h-[38rem]" />
+			<UrbanPlanningCarousel heightClass="h-[38rem]">
+				<h1 className="font-playfair text-4xl md:text-6xl font-bold text-white text-center drop-shadow-lg mb-4">
+					Urban Planning
+				</h1>
+				<p className="font-inter text-xl md:text-2xl text-white text-center drop-shadow-md max-w-2xl">
+					Strategic planning solutions that shape sustainable, livable communities for current and future generations.
+				</p>
+			</UrbanPlanningCarousel>
 			{/* Animated Scroll Indicator */}
 			<div
 				className="absolute left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center"
@@ -104,15 +109,6 @@ const UrbanPlanning = () => (
           100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
       `}</style>
-			{/* Hero Text Overlay */}
-			<div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
-				<h1 className="font-playfair text-4xl md:text-6xl font-bold text-white text-center drop-shadow-lg mb-4">
-					Urban Planning
-				</h1>
-				<p className="font-inter text-xl md:text-2xl text-white text-center drop-shadow-md max-w-2xl">
-					Strategic planning solutions that shape sustainable, livable communities for current and future generations.
-				</p>
-			</div>
 		</section>
 		{/* Comprehensive Planning Section (white bg) */}
 		<section className="py-20 bg-white">

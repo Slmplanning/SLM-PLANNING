@@ -8,7 +8,7 @@ const images = [
   "/Assets/3D render.webp",
 ];
 
-const ThreeDRenderingCarousel = ({ heightClass = "h-[38rem]" }) => {
+const ThreeDRenderingCarousel = ({ heightClass = "h-[38rem]", children }) => {
   const [current, setCurrent] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
@@ -66,10 +66,9 @@ const ThreeDRenderingCarousel = ({ heightClass = "h-[38rem]" }) => {
       ))}
       {/* Overlay */}
       <div className="absolute inset-0 w-full h-full bg-black/60 z-20" />
-      {/* Text Content (replace with real content as needed) */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-center px-4">
-        <h2 className="font-playfair text-white text-4xl md:text-6xl font-bold drop-shadow-lg mb-4">3D Rendering</h2>
-        <p className="font-inter text-white text-lg md:text-2xl font-medium drop-shadow-lg max-w-2xl mx-auto">Photorealistic 3D visualizations for your projects.</p>
+      {/* Overlay Content (children) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-center px-4 w-full h-full">
+        {children}
       </div>
       {/* Carousel dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-40">

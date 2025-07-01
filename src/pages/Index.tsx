@@ -89,16 +89,15 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <HeroCarousel heightClass="min-h-screen" />
-        <div className="relative z-20 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+        <HeroCarousel heightClass="min-h-screen">
+          <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6 animate-fade-in text-white">
             Shaping Sustainable Futures
           </h1>
-          <p className="font-inter text-xl md:text-2xl mb-8 animate-fade-in">
+          <p className="font-inter text-xl md:text-2xl mb-8 animate-fade-in text-white">
             Innovative urban design, planning, and landscape architecture solutions 
             for NGOs, government bodies, and private sector clients.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in w-full max-w-2xl mx-auto">
             <Button 
               asChild 
               size="lg" 
@@ -115,7 +114,7 @@ const Index = () => {
               <Link to="/portfolio">View Portfolio</Link>
             </Button>
           </div>
-        </div>
+        </HeroCarousel>
       </section>
 
       {/* Introduction Section */}

@@ -53,25 +53,14 @@ const UrbanDesign = () => (
 		<Navigation />
 		{/* Hero Carousel Section */}
 		<section className="relative h-[38rem] flex items-center justify-center overflow-hidden pt-20 md:pt-0 px-2 sm:px-4">
-			{/* Headline and Description Text (centered, above carousel) */}
-			<div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
+			<UrbanDesignCarousel heightClass="h-[38rem]">
 				<h1 className="font-playfair text-4xl md:text-6xl font-bold text-white text-center drop-shadow-lg mb-4">
 					Urban Design
 				</h1>
 				<p className="font-inter text-xl md:text-2xl text-white text-center drop-shadow-md max-w-2xl">
 					Crafting Human-Centered Urban Spaces That Inspire, Connect, and Thrive.
 				</p>
-			</div>
-			{/* Home page style overlay for readability */}
-			<div
-				className="absolute inset-0 z-10 pointer-events-none"
-				style={{
-					background:
-						"linear-gradient(180deg, rgba(30, 41, 59, 0.55) 0%, rgba(30, 41, 59, 0.35) 60%, rgba(30, 41, 59, 0.15) 100%)",
-				}}
-			/>
-			{/* Hero Carousel Section */}
-			<UrbanDesignCarousel heightClass="h-[38rem]" />
+			</UrbanDesignCarousel>
 			{/* Animated Scroll Indicator */}
 			<div
 				className="absolute left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center"

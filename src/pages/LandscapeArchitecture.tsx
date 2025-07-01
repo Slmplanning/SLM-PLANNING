@@ -43,18 +43,14 @@ const LandscapeArchitecture = () => (
 		<Navigation />
 		{/* Hero Carousel Section */}
 		<section className="relative h-[38rem] flex items-center justify-center overflow-hidden pt-20 md:pt-0 px-2 sm:px-4">
-			{/* Gradient overlay for text readability */}
-			<div
-				className="absolute inset-0 z-10 pointer-events-none"
-				style={{
-					background:
-						"linear-gradient(180deg, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.25) 100%)",
-				}}
-			/>
-			{/* LandscapeArchitectureCarousel */}
-			<div className="w-full h-full flex items-center justify-center z-0">
-				<LandscapeArchitectureCarousel />
-			</div>
+			<LandscapeArchitectureCarousel heightClass="h-[38rem]">
+				<h1 className="font-playfair text-4xl md:text-6xl font-bold text-white text-center drop-shadow-lg mb-4">
+					Landscape Architecture
+				</h1>
+				<p className="font-inter text-xl md:text-2xl text-white text-center drop-shadow-md max-w-2xl">
+					Designing inspiring outdoor spaces for people and nature.
+				</p>
+			</LandscapeArchitectureCarousel>
 			{/* Animated Scroll Indicator */}
 			<div
 				className="absolute left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center"

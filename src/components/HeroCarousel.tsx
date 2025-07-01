@@ -6,7 +6,7 @@ const images = [
   "/Assets/Landscape Architecture (2).webp",
 ];
 
-const HeroCarousel = ({ heightClass = "h-[38rem]" }) => {
+const HeroCarousel = ({ heightClass = "h-[38rem]", children }) => {
   const [current, setCurrent] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [loadedImages, setLoadedImages] = useState(new Set());
@@ -70,10 +70,9 @@ const HeroCarousel = ({ heightClass = "h-[38rem]" }) => {
       ))}
       {/* Overlay */}
       <div className="absolute inset-0 w-full h-full bg-black/60 z-20" />
-      {/* Text Content (replace with real content as needed) */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-center px-4">
-        <h2 className="font-playfair text-white text-4xl md:text-6xl font-bold drop-shadow-lg mb-4">Landscape Architecture</h2>
-        <p className="font-inter text-white text-lg md:text-2xl font-medium drop-shadow-lg max-w-2xl mx-auto">Designing inspiring outdoor spaces for people and nature.</p>
+      {/* Overlay Content (children) */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-center px-4 w-full h-full">
+        {children}
       </div>
       {/* Carousel dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-40">
