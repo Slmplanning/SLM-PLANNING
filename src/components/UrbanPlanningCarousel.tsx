@@ -92,8 +92,8 @@ const UrbanPlanningCarousel: React.FC<UrbanPlanningCarouselProps> = ({ heightCla
       <div className="absolute inset-0 w-full h-full bg-black/60 z-20" />
       {/* Text Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-center px-4">
-        <h2 className="text-white text-4xl md:text-6xl font-bold drop-shadow-lg mb-4">{images[current].title}</h2>
-        <p className="text-white text-lg md:text-2xl font-medium drop-shadow-lg max-w-2xl mx-auto">{images[current].desc}</p>
+        <h2 className="font-playfair text-white text-4xl md:text-6xl font-bold drop-shadow-lg mb-4">{images[current].title}</h2>
+        <p className="font-inter text-white text-lg md:text-2xl font-medium drop-shadow-lg max-w-2xl mx-auto">{images[current].desc}</p>
       </div>
       {/* Carousel dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-40">

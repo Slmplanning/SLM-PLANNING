@@ -27,10 +27,10 @@ const queryClient = new QueryClient();
 
 // Loading component
 const LoadingSpinner = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slm-green-50 to-slm-green-100">
+  <div className="min-h-screen flex items-center justify-center bg-transparent">
     <div className="text-center">
       <div className="w-16 h-16 border-4 border-slm-green-300 border-t-slm-green-600 rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-slm-green-700 font-inter">Loading SLM Planning...</p>
+      <p className="text-slm-green-700 font-inter text-lg opacity-70">Loading...</p>
     </div>
   </div>
 );
