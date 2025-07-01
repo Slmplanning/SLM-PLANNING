@@ -88,7 +88,7 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden p-0 m-0 w-screen max-w-none">
         <HeroCarousel heightClass="min-h-screen">
           <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6 animate-fade-in text-white">
             Shaping Sustainable Futures
