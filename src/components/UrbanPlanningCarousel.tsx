@@ -66,7 +66,7 @@ const UrbanPlanningCarousel: React.FC<UrbanPlanningCarouselProps> = ({ heightCla
 
   if (!imagesLoaded) {
     return (
-      <div className={`fixed inset-0 w-screen h-screen flex items-center justify-center bg-gradient-to-br from-slm-green-50 to-slm-green-100`}>
+      <div className="fixed inset-0 w-screen h-screen flex items-center justify-center bg-transparent">
         <div className="animate-pulse">
           <div className="w-16 h-16 border-4 border-slm-green-300 border-t-slm-green-600 rounded-full animate-spin"></div>
         </div>
@@ -75,7 +75,7 @@ const UrbanPlanningCarousel: React.FC<UrbanPlanningCarouselProps> = ({ heightCla
   }
 
   return (
-    <div className={`fixed inset-0 w-screen h-screen flex items-center justify-center`}>
+    <div className={`relative w-full ${heightClass} flex items-center justify-center`}>
       {images.map((img, idx) => (
         <img
           key={idx}
@@ -88,8 +88,15 @@ const UrbanPlanningCarousel: React.FC<UrbanPlanningCarouselProps> = ({ heightCla
           loading={idx === 0 ? "eager" : "lazy"}
         />
       ))}
+      {/* Overlay */}
+      <div className="absolute inset-0 w-full h-full bg-black/60 z-20" />
+      {/* Text Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-30 text-center px-4">
+        <h2 className="text-white text-4xl md:text-6xl font-bold drop-shadow-lg mb-4">{images[current].title}</h2>
+        <p className="text-white text-lg md:text-2xl font-medium drop-shadow-lg max-w-2xl mx-auto">{images[current].desc}</p>
+      </div>
       {/* Carousel dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-40">
         {images.map((_, idx) => (
           <button
             key={idx}
